@@ -289,7 +289,7 @@
                                         <div class="img-wrapp content-box-2-img">
                                             <img src="{{ asset('assets/frontend/images/best-prod-4.png') }}" alt="first food box" class="best-prod-img no-download" />
                                         </div>
-                                        <div class="content-box">
+                                        <div class="content-box" id="test-sandwichbox">
                                             <div class="ps-8 ps-lg-0 mt-4 mt-lg-0">
                                                 <p class="text-danger fs-14 mb-0 fw-semibold">
                                                     #Most popular
