@@ -37,7 +37,7 @@
                 <div class="swiper-wrapper">
                     <!-- Slides -->
                     @foreach ($sliders as $slider)
-                        <section class="swiper-slide d-flex align-items-center p-2 p-lg-0" id="trigger-left">
+                        <section class="swiper-slide d-flex align-items-center p-4 p-lg-0" id="trigger-left">
                             <a href="{{$slider->url}}">
                             <img src="{{ asset('assets/images/' . $slider->photo) }}" alt="" class="img-fluid rounded rounded-lg-0" />
                             </a>
