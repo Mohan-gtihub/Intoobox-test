@@ -210,7 +210,7 @@
                             Discover them!
                         </p>
                         <div class="">
-                            <a href="#" class="btn btn-outline-danger text-uppercase text-sm fw-bold w-auto border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
+                            <a href="#" class="btn btn-outline-danger text-uppercase text-sm fw-bold w-auto border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
                                 View More
                                 <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                             </a>
@@ -252,7 +252,7 @@
                                             </h3>
                                             <div class="mt-6">
                                                 <a href="{{ route('front.catalog') }}?subcategory=biryani-boxes"
-                                                    class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
+                                                    class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
                                                     Shop Now
                                                     <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                 </a>
@@ -275,7 +275,7 @@
                                                 </h3>
                                                 <div class="mt-6">
                                                     <a href="{{ route('front.catalog') }}?subcategory=Wrap-Box"
-                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
+                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
                                                         Shop Now
                                                         <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                     </a>
@@ -299,7 +299,7 @@
                                                 </h3>
                                                 <div class="mt-6">
                                                     <a href="{{ route('front.catalog') }}?subcategory=sandwich-boxes"
-                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
+                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
                                                         Shop Now
                                                         <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                     </a>
@@ -321,7 +321,7 @@
                                                 Boat Trays
                                                 <div class="mt-6">
                                                     <a href="{{ route('front.catalog') }}?subcategory=boat-trays"
-                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
+                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
                                                         Shop now
                                                         <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                     </a>
@@ -343,7 +343,7 @@
                                         </h3>
                                         <div class="mt-6">
                                             <a href="{{ route('front.catalog') }}?subcategory=Pizza-Box-"
-                                                class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
+                                                class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
                                                 Shop now
                                                 <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                             </a>

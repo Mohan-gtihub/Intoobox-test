@@ -565,3 +565,7 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 #test-sandwichbox{
     right: 18px!important;
 }
+
+#hovercolor:hover{
+    color: white;
+}
