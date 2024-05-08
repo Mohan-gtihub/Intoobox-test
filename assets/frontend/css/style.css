@@ -11,54 +11,54 @@
 .footer-bg{background-color:#262626}
 body{overflow-x:hidden;background-color:#fff;font-family:Neue-Einstellung-Regular,sans-serif;color:#333;font-size:16px;font-weight:400}
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:Neue-Einstellung-Regular,sans-serif}
-.heading-h1{font-size:55px;font-weight:500}
+.heading-h1{font-size:53px;font-weight:500}
 @media (max-width:1440px){
-.heading-h1{font-size:42px}
+.heading-h1{font-size:40px}
 }
 @media (max-width:767px){
-.heading-h1{font-size:35px}
+.heading-h1{font-size:33px}
 }
-.heading-h2{font-size:35px;font-weight:700}
+.heading-h2{font-size:33px;font-weight:700}
 @media (max-width:767px){
-.heading-h2{font-size:20px;font-weight:700}
+.heading-h2{font-size:180px;font-weight:700}
 }
-.heading-h3{font-size:30px;font-weight:400}
+.heading-h3{font-size:28px;font-weight:400}
 @media (max-width:767px){
-.heading-h3{font-size:25px;font-weight:400}
+.heading-h3{font-size:23px;font-weight:400}
 }
-.heading-h4{font-size:25px;font-weight:700}
+.heading-h4{font-size:23px;font-weight:700}
 @media (max-width:1440px){
-.heading-h4{font-size:20px;font-weight:700}
+.heading-h4{font-size:18px;font-weight:700}
 }
 @media (max-width:767px){
-.heading-h4{font-size:20px;font-weight:700}
+.heading-h4{font-size:18px;font-weight:700}
 }
-.heading-h5{font-size:22px;font-weight:400}
+.heading-h5{font-size:20px;font-weight:400}
 @media (max-width:1440px){
-.heading-h5{font-size:16px;font-weight:400}
+.heading-h5{font-size:14px;font-weight:400}
 }
 @media (max-width:767px){
-.heading-h5{font-size:16px;font-weight:400}
+.heading-h5{font-size:14px;font-weight:400}
 }
-.heading-h6{font-size:20px;font-weight:400}
+.heading-h6{font-size:18px;font-weight:400}
 @media (max-width:1440px){
-.heading-h6{font-size:16px;font-weight:400}
+.heading-h6{font-size:14px;font-weight:400}
 }
 @media (max-width:767px){
-.heading-h6{font-size:16px;font-weight:400}
+.heading-h6{font-size:14px;font-weight:400}
 }
-.text-lg{font-size:18px}
-.text-base{font-size:16px;font-weight:400}
-@media (max-width:1440px){
+.text-lg{font-size:16px}
 .text-base{font-size:14px;font-weight:400}
+@media (max-width:1440px){
+.text-base{font-size:12px;font-weight:400}
 }
 @media (max-width:767px){
-.text-base{font-size:14px;font-weight:400}
+.text-base{font-size:12px;font-weight:400}
 }
-.text-md{font-size:15px}
-.text-sm{font-size:14px}
-.text-xm{font-size:10px}
-p{font-size:15px}
+.text-md{font-size:13px}
+.text-sm{font-size:12px}
+.text-xm{font-size:8px}
+p{font-size:13px}
 a{text-decoration:none}
 li,ul{list-style:none}
 .hero-section{background:linear-gradient(to right,rgba(223,223,223,0),rgba(223,223,223,0)),url(/assets/images/backgrounds/header-bg.png);background-repeat:no-repeat;background-position:center center;background-size:contain;height:800px}
