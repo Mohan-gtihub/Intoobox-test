@@ -567,5 +567,5 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 }
 
 #hovercolor:hover{
-    color: white;
+    color: white!important;
 }
