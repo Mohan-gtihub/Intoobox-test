@@ -37,7 +37,7 @@
                 <div class="swiper-wrapper">
                     <!-- Slides -->
                     @foreach ($sliders as $slider)
-                        <section class="swiper-slide d-flex align-items-center p-4 p-lg-0" id="trigger-left">
+                        <section class="swiper-slide d-flex align-items-center p-2 p-lg-0" id="trigger-left">
                             <a href="{{$slider->url}}">
                             <img src="{{ asset('assets/images/' . $slider->photo) }}" alt="" class="img-fluid rounded rounded-lg-0" />
                             </a>
@@ -55,7 +55,7 @@
 
         <!-- banner section start here -->
         <section class="categories-section px-0 d-lg-none d-sm-block">
-            <div class="row p-4 g-3">
+            <div class="row p-2 g-3">
                 <div class="col-6"><img src="{{ asset('assets/images/b1.jpg') }}" alt="" class="img-fluid rounded" /></div>
                 <div class="col-6"><img src="{{ asset('assets/images/b2.jpg') }}" alt="" class="img-fluid rounded" /></div>
                 <div class="col-6"><img src="{{ asset('assets/images/b3.jpg') }}" alt="" class="img-fluid rounded" /></div>
