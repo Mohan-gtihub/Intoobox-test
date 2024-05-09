@@ -645,46 +645,46 @@ $(function ($) {
         })
 
 
+        product quintity select js Start
+        $(document).on('click', '.subclick', function () {
+            let current_qty = parseInt($('.cart-amount').val());
+            if (current_qty > 1) {
+                $('.cart-amount').val(current_qty - 1);
+            } else {
+                error('Minumum Quantity Must Be 1');
+            }
+
+        })
+
         // product quintity select js Start
-        // $(document).on('click', '.subclick', function () {
-        //     let current_qty = parseInt($('.cart-amount').val());
-        //     if (current_qty > 1) {
-        //         $('.cart-amount').val(current_qty - 1);
-        //     } else {
-        //         error('Minumum Quantity Must Be 1');
-        //     }
-
-        // })
-
-        // // product quintity select js Start
 
 
-        // $(document).on('click', '.addclick', function () {
-        //     let current_stock = parseInt($('#current_stock').val());
-        //     let current_qty = parseInt($('.cart-amount').val());
-        //     if (current_qty < current_stock) {
-        //         $('.cart-amount').val(current_qty + 1);
-        //     } else {
-        //         dangerNotification('Product Quantity Maximum ' + current_stock);
-        //     }
-        // })
+        $(document).on('click', '.addclick', function () {
+            let current_stock = parseInt($('#current_stock').val());
+            let current_qty = parseInt($('.cart-amount').val());
+            if (current_qty < current_stock) {
+                $('.cart-amount').val(current_qty + 1);
+            } else {
+                dangerNotification('Product Quantity Maximum ' + current_stock);
+            }
+        })
 
 
-        // $(document).on('click', '.subclick', function () {
-        //     var $input = $(this).parent().find('.cart-qty');
-        //     var currentVal = parseInt($input.val());
-        //     let current_qty = currentVal;
-        //     var minQty = parseInt($input.attr('min'));
-        //     let multiple = parseInt($('.decrement').data('multiple')); // assuming decrement has the same multiple
+        $(document).on('click', '.subclick', function () {
+            var $input = $(this).parent().find('.cart-qty');
+            var currentVal = parseInt($input.val());
+            let current_qty = currentVal;
+            var minQty = parseInt($input.attr('min'));
+            let multiple = parseInt($('.decrement').data('multiple')); // assuming decrement has the same multiple
 
-        //     // Check if current quantity minus multiple is at least the minimum quantity allowed
-        //     if (current_qty - multiple >= 1) {
-        //         $('.cart-amount').val(current_qty - multiple);
-        //     } else {
-        //         $('.cart-amount').val(current_qty); // Reset to minimum if subtraction goes below 1
-        //         dangerNotification('Minimum Quantity Must Be ' + current_qty); // Use a function that handles error messages if exists
-        //     }
-        // });
+            // Check if current quantity minus multiple is at least the minimum quantity allowed
+            if (current_qty - multiple >= 1) {
+                $('.cart-amount').val(current_qty - multiple);
+            } else {
+                $('.cart-amount').val(current_qty); // Reset to minimum if subtraction goes below 1
+                dangerNotification('Minimum Quantity Must Be ' + current_qty); // Use a function that handles error messages if exists
+            }
+        });
 
         $(document).on('click', '.subclick', function () {
             var $input = $(this).parent().find('.cart-qty');
