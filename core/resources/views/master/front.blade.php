@@ -457,7 +457,7 @@ body_theme4 @endif
         <!--mobile top nav -->
         <!-- top nav -->
         <!-- center navigation -->
-            <div class="cetner-category-nav d-none d-lg-block mx-auto py-4 py-lg-4 w-lg-100 border-bottom ">
+            <div class="center-category-nav d-none d-lg-block mx-auto py-4 py-lg-4 w-lg-100 border-bottom ">
             <ul class="d-flex cat-list center-nav ps-0 mb-0 align-items-center justify-content-center">
                 @php $mainCategoryCount = 0; @endphp
 
