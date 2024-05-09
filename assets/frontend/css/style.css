@@ -570,8 +570,8 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
     color: white!important;
 }
 
-@media (max-width:768){
+@media (min-width:768){
     #navbar {
-        justify-content: space-evenl!important;
+        justify-content: space-evenly!important;
     }
 }
