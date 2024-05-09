@@ -20,7 +20,7 @@ body{overflow-x:hidden;background-color:#fff;font-family:Neue-Einstellung-Regula
 }
 .heading-h2{font-size:33px;font-weight:700}
 @media (max-width:767px){
-.heading-h2{font-size:180px;font-weight:700}
+.heading-h2{font-size:18px;font-weight:700}
 }
 .heading-h3{font-size:28px;font-weight:400}
 @media (max-width:767px){
