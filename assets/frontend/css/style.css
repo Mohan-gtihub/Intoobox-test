@@ -572,6 +572,6 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 
 @media (max-width:768){
     #navbar {
-        justify-content: space-evenly;
+        justify-content: space-evenl!important;
     }
 }
