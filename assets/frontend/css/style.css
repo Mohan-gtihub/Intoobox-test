@@ -569,9 +569,6 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 #hovercolor:hover{
     color: white!important;
 }
-
-@media (min-width:768){
-    #navbar {
-        justify-content: space-evenly!important;
-    }
+#navbar {
+    justify-content: space-evenly!important;
 }
