@@ -13,7 +13,7 @@ body{overflow-x:hidden;background-color:#fff;font-family:Neue-Einstellung-Regula
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:Neue-Einstellung-Regular,sans-serif}
 .heading-h1{font-size:53px;font-weight:500}
 @media (max-width:1440px){
-.heading-h1{font-size:40px}
+.heading-h1{font-size:40px} 
 }
 @media (max-width:767px){
 .heading-h1{font-size:33px}
@@ -568,4 +568,10 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 
 #hovercolor:hover{
     color: white!important;
+}
+
+@media (max-width:768){
+    #navbar {
+        justify-content: space-evenly;
+    }
 }

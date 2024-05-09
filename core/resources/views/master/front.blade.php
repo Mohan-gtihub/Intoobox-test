@@ -427,7 +427,7 @@ body_theme4 @endif
             </div>
         </div>
         <!--mobile top nav -->
-        <div class="container-fluid d-flex d-md-none container-5xl position-relative top-nav px-4 py-4">
+        <div class="container-fluid d-flex d-md-none container-5xl position-relative top-nav px-4 py-4" id="navbar">
             <div class="d-flex align-items-center justify-content-between">
                 <div id="navbarIcon" class="d-flex justify-content-center category-menu">
                     <i class="fas fa-bars fs-24 text-muted"></i>
