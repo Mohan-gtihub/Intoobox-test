@@ -594,3 +594,10 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
     color: #fff !important;
     border-radius: 50% !important;
 }
+
+
+@media(max-width:2560px){
+    #heroimg{
+        width: 2560px;
+    }
+}
