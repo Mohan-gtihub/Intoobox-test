@@ -45,16 +45,23 @@
                             <div class="form-group pb-0  mb-0">
                                 <label class="d-block">{{ __('Featured Image') }} *</label>
                             </div>
-                            <div class="form-group pb-0 pt-0 mt-0 mb-0">
-                                <img class="admin-img lg" src="">
-                            </div>
                             <div class="form-group position-relative ">
-                                <label class="file">
-                                    <input type="file" accept="image/*" class="upload-photo" name="photo" id="file" aria-label="File browser example">
-                                    <span class="file-custom text-left">{{ __('Upload Image...') }}</span>
-                                </label>
+                                <label class="text-sm"><small>{{ __('Image Size Should Be 800 x 800. or square size') }}</small></label>
+                                <div class="input-group" data-toggle="aizuploader" data-multiple="true">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">
+                                            {{ trans('Browse') }}</div>
+                                    </div>
+                                    <div class="form-control file-amount {{ $errors->has('photo') ? ' is-invalid' : '' }}">{{ trans('Choose File') }}</div>
+                                    <input type="hidden" name="photo" value="{{ isset($company) ? $company->photo : old('photo') }}" class="selected-files" required>
+                                    @if ($errors->has('photo'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('photo') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="file-preview"></div>
                                 <br>
-                                <span class="mt-1 text-info">{{ __('Image Size Should Be 800 x 800. or square size') }}</span>
                             </div>
                         </div>
                     </div>
@@ -69,13 +76,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group position-relative ">
-                                <label class="file">
-                                    <input type="file" accept="image/*" name="galleries[]" id="gallery_file" aria-label="File browser example" accept="image/*" multiple>
-                                    <span class="file-custom text-left">{{ __('Upload Image...') }}</span>
-                                </label>
-                                <br>
-                                <span class="mt-1 text-info">{{ __('Image Size Should Be 800 x 800. or square size') }}</span>
+                            <div class="form-group">
+                                <label class="text-sm"><small>{{ __('Image Size Should Be 800 x 800. or square size') }}</small></label>
+                                <div class="input-group" data-toggle="aizuploader" data-multiple="true">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">
+                                            {{ trans('Browse') }}</div>
+                                    </div>
+                                    <div class="form-control file-amount {{ $errors->has('galleries') ? ' is-invalid' : '' }}">{{ trans('Choose File') }}</div>
+                                    <input type="hidden" name="galleries" value="{{ isset($company) ? $company->logo : old('galleries') }}" class="selected-files" required>
+                                    @if ($errors->has('galleries'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('galleries') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="file-preview"></div>
                             </div>
                         </div>
                     </div>
@@ -89,7 +105,7 @@
                                             <input type="number" min="1" id="min-qty" name="min_qty" class="form-control" placeholder="{{ __('1') }}" value="{{ old('min_qty') }}">
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
@@ -120,8 +136,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-btn">
-                                        <button type="button" class="btn btn-success add-discount-items" data-text="{{ __('Number of itmes') }}"
-                                            data-text1="{{ __('100.0') }}"> <i class="fa fa-plus"></i> </button>
+                                        <button type="button" class="btn btn-success add-discount-items" data-text="{{ __('Number of itmes') }}" data-text1="{{ __('100.0') }}"> <i
+                                                class="fa fa-plus"></i> </button>
                                     </div>
                                 </div>
 
@@ -267,7 +283,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            
+
                             <div class="form-group">
                                 <label for="stock">{{ __('Total in stock') }}
                                     *</label>

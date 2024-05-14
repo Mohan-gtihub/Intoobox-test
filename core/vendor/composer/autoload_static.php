@@ -40,6 +40,7 @@ class ComposerStaticInit1663041e2b562ed7526b53aa1da3b14e
         'd7354eb4c8441fbf08eec280b61c7c73' => __DIR__ . '/..' . '/rachidlaasri/laravel-installer/src/Helpers/functions.php',
         '13906c19e3d8fcd1341b24ed4d51cf72' => __DIR__ . '/..' . '/razorpay/razorpay/Deprecated.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -792,6 +793,7 @@ class ComposerStaticInit1663041e2b562ed7526b53aa1da3b14e
         'App\\Http\\Controllers\\Back\\FaqController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/FaqController.php',
         'App\\Http\\Controllers\\Back\\FcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/FcategoryController.php',
         'App\\Http\\Controllers\\Back\\FeatureController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/FeatureController.php',
+        'App\\Http\\Controllers\\Back\\HibaUploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/HibaUploadController.php',
         'App\\Http\\Controllers\\Back\\HomePageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/HomePageController.php',
         'App\\Http\\Controllers\\Back\\ItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/ItemController.php',
         'App\\Http\\Controllers\\Back\\LanguageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Back/LanguageController.php',
@@ -921,12 +923,14 @@ class ComposerStaticInit1663041e2b562ed7526b53aa1da3b14e
         'App\\Models\\Ticket' => __DIR__ . '/../..' . '/app/Models/Ticket.php',
         'App\\Models\\TrackOrder' => __DIR__ . '/../..' . '/app/Models/TrackOrder.php',
         'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
+        'App\\Models\\Upload' => __DIR__ . '/../..' . '/app/Models/Upload.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Wishlist' => __DIR__ . '/../..' . '/app/Models/Wishlist.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Providers\\HelperServiceProvider' => __DIR__ . '/../..' . '/app/Providers/HelperServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Repositories\\Back\\AccountRepository' => __DIR__ . '/../..' . '/app/Repositories/Back/AccountRepository.php',
         'App\\Repositories\\Back\\BcategoryRepository' => __DIR__ . '/../..' . '/app/Repositories/Back/BcategoryRepository.php',

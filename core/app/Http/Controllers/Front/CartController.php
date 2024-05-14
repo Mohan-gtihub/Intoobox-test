@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
+
     /**
      * Constructor Method.
      *
@@ -35,7 +36,6 @@ class CartController extends Controller
         }else{
             $cart = [];
         }
-        Log::info($cart);
         return view('front.catalog.cart',[
             'cart' => $cart
         ]);
@@ -138,6 +138,7 @@ class CartController extends Controller
 
     public function cartClear()
     {
+        Session::forget('cart');
         Session::forget('cart');
         Session::flash('success',__('Cart clear successfully'));
         return back();

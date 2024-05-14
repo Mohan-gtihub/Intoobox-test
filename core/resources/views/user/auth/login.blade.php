@@ -87,7 +87,7 @@
               </div>
               @endif
                     <div class="col-md-12">
-                      <button class="btn btn-danger text-white btn-block w-100 py-3 shadow-0 outline-0 rounded-0 text-uppercase"> {{__('Register')}} </button>
+                      <button class="btn btn-danger text-white btn-block w-100 py-3 shadow-none outline-0 rounded-0 text-uppercase"> {{__('Register')}} </button>
                     </div>
                   </div>
                 </form>
@@ -123,7 +123,7 @@
                     <a href="{{route('user.forgot')}}" class="mb-0 text-muted">Fogot your Password?</a>
                   </div>
                   <div class="mt-9">
-                    <button class="btn btn-danger text-white btn-block w-100 py-3 shadow-0 outline-0 rounded-0 text-uppercase"> sign in </button>
+                    <button class="btn btn-danger text-white btn-block w-100 py-3 shadow-none outline-0 rounded-0 text-uppercase"> sign in </button>
                   </div>
                 </form>
                 <div class="row mt-8">
@@ -146,54 +146,58 @@
   </section>
   <section class="delivery-section bg-gray-100 py-10 py-lg-13">
     <div class="container">
-      <div class="w-100 w-lg-90 mx-auto">
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
-            <div class="d-flex align-items-center">
-              <div>
-                <img src="{{asset('assets/frontend/images/hand.png')}}" alt="hand icons" class="img-fluid" />
-              </div>
-              <div class="ms-5">
-                <h5 class="text-dark heading-h6 fw-bold mb-1"> Free Delivery </h5>
-                <p class="text-gray-700 text-base fs-16 mb-0"> For all order over ₹ 2000.00 </p>
-              </div>
+        <div class="w-100 w-lg-90 w-5xl-100 mx-auto">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex justify-content-lg-center align-items-center">
+                        <div>
+                            <img src="{{ asset('assets/images/cart-icon.svg') }}" alt="hand icons" class="img-fluid no-download" width="35" />
+                        </div>
+                        <div class="ms-5">
+                            <h5 class="text-dark heading-h6 fw-bold mb-1">
+                                Low Minimums
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex justify-content-lg-center align-items-center">
+                        <div>
+                            <img src="{{ asset('assets/images/liquidity-icon.svg') }}" alt="hand icons" class="img-fluid no-download"  width="35" />
+                        </div>
+                        <div class="ms-5">
+                            <h5 class="text-dark heading-h6 fw-bold mb-1">
+                                Sustainable Solutions
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ">
+                    <div class="d-flex justify-content-lg-center align-items-center">
+                        <div>
+                            <img src="{{ asset('assets/frontend/images/payment.png') }}" alt="hand icons" class="img-fluid no-download" />
+                        </div>
+                        <div class="ms-5">
+                            <h5 class="text-dark heading-h6 fw-bold mb-1">
+                                Secure Payment
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex justify-content-lg-center align-items-center">
+                        <div>
+                            <img src="{{ asset('assets/frontend/images/support.png') }}" alt="hand icons" class="img-fluid no-download" />
+                        </div>
+                        <div class="ms-5">
+                            <h5 class="text-dark heading-h6 fw-bold mb-1">
+                                24/7 Support
+                            </h5>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="d-flex align-items-center">
-              <div>
-                <img src="{{asset('assets/frontend/images/return.png')}}" alt="hand icons" class="img-fluid" />
-              </div>
-              <div class="ms-5">
-                <h5 class="text-dark heading-h6 fw-bold mb-1"> 30 Days Return </h5>
-                <p class="text-gray-700 text-base fs-16 mb-0"> If goods have Problems </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="d-flex align-items-center">
-              <div>
-                <img src="{{asset('assets/frontend/images/payment.png')}}" alt="hand icons" class="img-fluid" />
-              </div>
-              <div class="ms-5">
-                <h5 class="text-dark heading-h6 fw-bold mb-1"> Secure Payment </h5>
-                <p class="text-gray-700 text-base fs-16 mb-0"> 100% secure payment </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="d-flex align-items-center">
-              <div>
-                <img src="{{asset('assets/frontend/images/support.png')}}" alt="hand icons" class="img-fluid" />
-              </div>
-              <div class="ms-5">
-                <h5 class="text-dark heading-h6 fw-bold mb-1"> 24/7 Support </h5>
-                <p class="text-gray-700 text-base fs-16 mb-0"> Dedicated support </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 @endsection

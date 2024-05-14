@@ -29,7 +29,7 @@
             <div class="d-flex align-items-center">
             <div class="cart-img-wrap">
               <a class="product-thumb" href="{{ route('front.product', $item['slug']) }}">
-                <img src="{{ asset('assets/images/' . $item['photo']) }}" class="cart-img" alt="Product"></a>
+                <img src="{{ uploaded_asset(explode(",", $item['photo'])[0]) }}" class="cart-img" alt="Product"></a>
             </div>
             <div>
                 <p class="mb-0 text-dark ms-3 fs-18">{{ Str::limit($item['name'], 45) }}</p>
@@ -99,6 +99,14 @@
           </div>
         </div>
       </form>
+      <div class="text-right text-lg column {{ Session::has('coupon') ? '' : 'd-none' }}"><span
+        class="text-muted">{{ __('Discount') }}
+        ({{ Session::has('coupon') ? Session::get('coupon')['code']['title'] : '' }}) : </span><span
+        class="text-gray-dark">{{ PriceHelper::setCurrencyPrice(Session::has('coupon') ? Session::get('coupon')['discount'] : 0) }}</span>
+        <a class="remove-from-cart btn btn-danger btn-sm text-white p-1"
+                        href="{{ route('front.promo.destroy') }}" data-toggle="tooltip"
+                        title="Remove item"><i class="fas fa-times"></i></a>
+</div>
     </div>
     <div class="col-lg-4">
       <div class="mt-4 mt-lg-0 p-7 border border-2 w-100 w-lg-auto">

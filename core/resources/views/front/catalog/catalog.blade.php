@@ -23,13 +23,25 @@
     @if ($items->count() > 0)
         @if ($checkType != 'list')
             @foreach ($items as $item)
+                @php
+                    $thumbs = [];
+                @endphp
+                @if ($item->photo != null)
+                    @php
+                        $thumbs = explode(',', $item->photo);
+                    @endphp
+                @endif
                 <div class="prod-column col-lg-3 col-md-4 col-6 d-flex flex-column prod-column align-items-center position-relative overflow-hidden">
                     <div class="position-relative overflow-hidden">
                         <a href="{{ route('front.product', $item->slug) }}">
 
-                            <img data-src="{{ asset('assets/images/' . $item->thumbnail) }}"
-                                data-src-2="{{ $item->galleries && count($item->galleries) > 0 ? asset('assets/images/' . $item->galleries[0]->photo) : '' }}" alt="Image 1"
-                                class="img-fluid cat-prod-img lazy no-download rounded" /></a>
+                            <img @foreach ($thumbs as $key => $thumb)
+                            @if ($key === 0)
+                            data-src="{{ uploaded_asset($thumb) }}"
+                            @else
+                                data-src-2="{{ uploaded_asset($thumb) }}"
+                                @endif @endforeach
+                                alt="Image 1" class="img-fluid cat-prod-img lazy no-download rounded" /></a>
                         <!-- floating content -->
                         <div class="position-absolute cart-actions text-white fw-bold fs-14 mb-0">
                             <div class="action-btn shadow-lg">
@@ -43,11 +55,7 @@
                                 title="{{ __('Compare') }}"><i class="fa-solid fa-arrow-right-arrow-left fs-18"></i></a>
                         </div>
 
-                        @if ($item->previous_price && $item->previous_price != 0)
-                            <p class="position-absolute off-price bg-danger text-white fw-bold fs-12 mb-0">
-                                -{{ PriceHelper::DiscountPercentage($item) }}
-                            </p>
-                        @endif
+                        
                         @if ($item->is_stock())
                             <span
                                 class="position-absolute item-badge text-white fw-bold fs-12 mb-0
@@ -94,14 +102,14 @@
                         <div class="quick-add-btn position-absolute">
                             @if ($item->item_type != 'affiliate')
                                 @if ($item->is_stock())
-                                    <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none" data-target="{{ $item->id }}">Quick
+                                    <button class="btn btn-danger py-3 shadow-none btn-block w-100 text-white product-button add_to_single_cart" data-target="{{ $item->id }}">Quick
                                         Add</button>
                                 @else
-                                    <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none" data-target="{{ $item->id }}" disabled>Quick
+                                    <button class="btn btn-danger py-3 shadow-none btn-block w-100 text-white product-button add_to_single_cart" data-target="{{ $item->id }}" disabled>Quick
                                         Add</button>
                                 @endif
                             @else
-                                <a class="btn btn-danger py-3 btn-block w-100 text-dark" href="{{ $item->affiliate_link }}" target="_blank"
+                                <a class="btn btn-danger py-3 btn-block w-100 text-dark shadow-none" href="{{ $item->affiliate_link }}" target="_blank"
                                     title="{{ __('Buy Now') }}">{{ __('Buy Now') }}</a>
                             @endif
                         </div>
@@ -131,6 +139,14 @@
             @endforeach
         @else
             @foreach ($items as $item)
+                @php
+                    $thumbs = [];
+                @endphp
+                @if ($item->photo != null)
+                    @php
+                        $thumbs = explode(',', $item->photo);
+                    @endphp
+                @endif
                 <div class="prod-column col-12">
 
                     <div class="d-flex product-content-wrap align-items-center position-relative overflow-hidden flex-row">
@@ -139,8 +155,12 @@
                                 <div class="position-relative overflow-hidden">
                                     <a href="{{ route('front.product', $item->slug) }}">
 
-                                        <img data-src="{{ asset('assets/images/' . $item->thumbnail) }}"
-                                            data-src-2="{{ $item->galleries && count($item->galleries) > 0 ? asset('assets/images/' . $item->galleries[0]->photo) : '' }}" alt="Image 1"
+                                        <img @foreach ($thumbs as $key => $thumb)
+                                        @if ($key === 0)
+                                        data-src="{{ uploaded_asset($thumb) }}"
+                                        @else
+                                            data-src-2="{{ uploaded_asset($thumb) }}"
+                                            @endif @endforeach alt="Image 1"
                                             class="img-fluid cat-prod-img lazy no-download rounded" /></a>
                                     <!-- floating content -->
                                     <div class="position-absolute cart-actions text-white fw-bold fs-14 mb-0">
@@ -156,11 +176,6 @@
                                             title="{{ __('Compare') }}"><i class="fa-solid fa-arrow-right-arrow-left fs-18"></i></a>
                                     </div>
 
-                                    @if ($item->previous_price && $item->previous_price != 0)
-                                        <p class="position-absolute off-price bg-danger text-white fw-bold fs-12 mb-0">
-                                            -{{ PriceHelper::DiscountPercentage($item) }}
-                                        </p>
-                                    @endif
                                     @if ($item->is_stock())
                                         <span
                                             class="position-absolute item-badge text-white fw-bold fs-12 mb-0
@@ -207,16 +222,14 @@
                                     <div class="quick-add-btn position-absolute">
                                         @if ($item->item_type != 'affiliate')
                                             @if ($item->is_stock())
-                                                <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none"
-                                                    data-target="{{ $item->id }}">Quick
+                                                <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart" data-target="{{ $item->id }}">Quick
                                                     Add</button>
                                             @else
-                                                <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none" data-target="{{ $item->id }}"
-                                                    disabled>Quick
+                                                <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart" data-target="{{ $item->id }}" disabled>Quick
                                                     Add</button>
                                             @endif
                                         @else
-                                            <a class="btn btn-danger py-3 btn-block w-100 text-white shadow-none" href="{{ $item->affiliate_link }}" target="_blank"
+                                            <a class="btn btn-danger py-3 btn-block w-100 text-white" href="{{ $item->affiliate_link }}" target="_blank"
                                                 title="{{ __('Buy Now') }}">{{ __('Buy Now') }}</a>
                                         @endif
                                     </div>
@@ -274,7 +287,7 @@
 <!-- Pagination-->
 <div class="row mt-15" id="item_pagination">
     <div class="col-12 mt-8 mt-lg-12">
-        {{ $items->links() }}
+        {{ $items->links('pagination::bootstrap-5') }}
     </div>
 </div>
 

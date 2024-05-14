@@ -21,6 +21,8 @@ use Illuminate\Support\Str;
 class ItemController extends Controller
 {
 
+    protected $repository;
+
     /**
      * Constructor Method.
      *
@@ -65,8 +67,8 @@ class ItemController extends Controller
         $orderby = $request->has('orderby') ? ($request->orderby ? $request->orderby : 'desc') : 'desc';
 
         $datas = Item::when($item_type, function ($query, $item_type) {
-                return $query->where('item_type', $item_type);
-            })
+            return $query->where('item_type', $item_type);
+        })
             ->when($is_type, function ($query, $is_type) {
                 if ($is_type != 'outofstock') {
                     return $query->where('is_type', $is_type);
@@ -162,6 +164,7 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
+        // dd($request->all());
         $item_id = $this->repository->store($request);
 
         if ($request->is_button == 0) {
@@ -218,15 +221,17 @@ class ItemController extends Controller
         return redirect()->back()->withSuccess(__('Status Updated Successfully.'));
     }
 
-/**
- * Clone the specified resource.
- *
- * @param  Item $item
- * @return \Illuminate\Http\Response
- */
-public function clone(Item $item)
-{
-    $newItem = $item->replicate();
+    /**
+     * Change the status for editing the specified resource.
+     *
+     * @param  int  $id
+     * @param  int  $status
+     * @return \Illuminate\Http\Response
+     */
+    public function clone(Item $item)
+    {
+
+        $newItem = $item->replicate();
 
         
         $newItem->slug = Str::slug($item->name).'-'.Str::random(5);
@@ -235,7 +240,8 @@ public function clone(Item $item)
         $newItem->save();
 
         return redirect()->back()->withSuccess(__('Item Cloned Successfully.'));
-}
+    }
+
     /**
      * Remove the specified resource from storage.
      *

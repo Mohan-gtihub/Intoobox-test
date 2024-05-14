@@ -38,8 +38,8 @@
                     <!-- Slides -->
                     @foreach ($sliders as $slider)
                         <section class="swiper-slide d-flex align-items-center p-2 p-lg-0" id="trigger-left">
-                            <a href="{{$slider->url}}">
-                            <img src="{{ asset('assets/images/' . $slider->photo) }}" alt="" class="img-fluid rounded rounded-lg-0" id="test" />
+                            <a href="{{ $slider->url }}">
+                                <img src="{{ asset('assets/images/' . $slider->photo) }}" alt="" class="img-fluid rounded rounded-lg-0" />
                             </a>
                         </section>
                     @endforeach
@@ -86,12 +86,24 @@
                         <div class="row g-4">
                             @foreach ($feature_category_items as $key => $feature_category_item)
                                 @if ($key < 6)
+                                    @php
+                                        $thumbs = [];
+                                    @endphp
+                                    @if ($feature_category_item->photo != null)
+                                        @php
+                                            $thumbs = explode(',', $feature_category_item->photo);
+                                        @endphp
+                                    @endif
                                     <div class="col-6 col-lg-4 d-flex flex-column align-items-center prod-column position-relative overflow-hidden">
                                         <div class="position-relative overflow-hidden">
                                             <a href="{{ route('front.product', $feature_category_item->slug) }}">
 
-                                                <img data-src="{{ asset('assets/images/' . $feature_category_item->thumbnail) }}"
-                                                    data-src-2="{{ $feature_category_item->galleries && count($feature_category_item->galleries) > 0 ? asset('assets/images/' . $feature_category_item->galleries[0]->photo) : '' }}"
+                                                <img @foreach ($thumbs as $key => $thumb)
+                                                @if ($key === 0)
+                                                data-src="{{ uploaded_asset($thumb) }}"
+                                                @else
+                                                    data-src-2="{{ uploaded_asset($thumb) }}"
+                                                    @endif @endforeach
                                                     alt="Image 1" class="img-fluid cat-prod-img lazy no-download rounded" /></a>
                                             <!-- floating content -->
                                             <div class="position-absolute cart-actions text-white fw-bold fs-14 mb-0">
@@ -158,11 +170,11 @@
                                             <div class="quick-add-btn position-absolute">
                                                 @if ($feature_category_item->item_type != 'affiliate')
                                                     @if ($feature_category_item->is_stock())
-                                                        <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none "
+                                                        <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none"
                                                             data-target="{{ $feature_category_item->id }}">Quick
                                                             Add</button>
                                                     @else
-                                                        <a class="btn btn-danger py-3 btn-block w-100 text-white" href="{{ route('front.product', $feature_category_item->slug) }}"
+                                                        <a class="btn btn-danger py-3 btn-block w-100 text-white shadow-none" href="{{ route('front.product', $feature_category_item->slug) }}"
                                                             title="{{ __('Details') }}"><i class="icon-arrow-right"></i></a>
                                                     @endif
                                                 @else
@@ -209,8 +221,8 @@
                             what goes inside, with ourgift boxes you are sure to impress!
                             Discover them!
                         </p>
-                        <div class="">
-                            <a href="#" class="btn btn-outline-danger text-uppercase text-sm fw-bold w-auto border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
+                        <div class="view-more">
+                            <a href="#" class="btn btn-outline-danger text-uppercase text-sm fw-bold w-auto border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
                                 View More
                                 <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                             </a>
@@ -252,7 +264,7 @@
                                             </h3>
                                             <div class="mt-6">
                                                 <a href="{{ route('front.catalog') }}?subcategory=biryani-boxes"
-                                                    class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
+                                                    class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
                                                     Shop Now
                                                     <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                 </a>
@@ -275,7 +287,7 @@
                                                 </h3>
                                                 <div class="mt-6">
                                                     <a href="{{ route('front.catalog') }}?subcategory=Wrap-Box"
-                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
+                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
                                                         Shop Now
                                                         <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                     </a>
@@ -289,7 +301,7 @@
                                         <div class="img-wrapp content-box-2-img">
                                             <img src="{{ asset('assets/frontend/images/best-prod-4.png') }}" alt="first food box" class="best-prod-img no-download" />
                                         </div>
-                                        <div class="content-box" id="test-sandwichbox">
+                                        <div class="content-box">
                                             <div class="ps-8 ps-lg-0 mt-4 mt-lg-0">
                                                 <p class="text-danger fs-14 mb-0 fw-semibold">
                                                     #Most popular
@@ -299,7 +311,7 @@
                                                 </h3>
                                                 <div class="mt-6">
                                                     <a href="{{ route('front.catalog') }}?subcategory=sandwich-boxes"
-                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
+                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
                                                         Shop Now
                                                         <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                     </a>
@@ -321,7 +333,7 @@
                                                 Boat Trays
                                                 <div class="mt-6">
                                                     <a href="{{ route('front.catalog') }}?subcategory=boat-trays"
-                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
+                                                        class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
                                                         Shop now
                                                         <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                                     </a>
@@ -343,7 +355,7 @@
                                         </h3>
                                         <div class="mt-6">
                                             <a href="{{ route('front.catalog') }}?subcategory=Pizza-Box-"
-                                                class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark" id="hovercolor">
+                                                class="btn btn-outline-danger text-uppercase text-sm fw-bold border border-2 border-danger shadow-none px-4 py-2 rounded-pill text-dark">
                                                 Shop now
                                                 <i class="fas ms-2 text-sm text-dark fa-arrow-right"></i>
                                             </a>
@@ -375,12 +387,24 @@
                 <div class="mt-6 w-100 w-lg-90 w-5xl-100 mx-auto mt-8">
                     <div class="row g-4">
                         @foreach ($select_8_item_home as $item)
+                        @php
+                                        $thumbs = [];
+                                    @endphp
+                                    @if ($item->photo != null)
+                                        @php
+                                            $thumbs = explode(',', $item->photo);
+                                        @endphp
+                                    @endif
                             <div class="col-6 col-lg-3 d-flex flex-column prod-column align-items-center position-relative overflow-hidden">
                                 <div class="position-relative overflow-hidden">
                                     <a href="{{ route('front.product', $item->slug) }}">
 
-                                        <img data-src="{{ asset('assets/images/' . $item->thumbnail) }}"
-                                            data-src-2="{{ $item->galleries && count($item->galleries) > 0 ? asset('assets/images/' . $item->galleries[0]->photo) : '' }}" alt="Image 1"
+                                        <img  @foreach ($thumbs as $key => $thumb)
+                                        @if ($key === 0)
+                                        data-src="{{ uploaded_asset($thumb) }}"
+                                        @else
+                                            data-src-2="{{ uploaded_asset($thumb) }}"
+                                            @endif @endforeach alt="Image 1"
                                             class="img-fluid cat-prod-img lazy no-download rounded" /></a>
                                     <!-- floating content -->
                                     <div class="position-absolute cart-actions text-white fw-bold fs-14 mb-0">
@@ -458,8 +482,25 @@
                                                     class="icon-arrow-right"></i></a>
                                         @endif
                                     </div>
+                                    <div class="quick-add-btn position-absolute">
+                                        @if ($item->item_type != 'affiliate')
+                                            @if ($item->is_stock())
+                                                <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none text-white"
+                                                    data-target="{{ $item->id }}">Quick
+                                                    Add</button>
+                                            @else
+                                                <button class="btn btn-danger py-3 btn-block w-100 text-white product-button add_to_single_cart shadow-none text-white" data-target="{{ $item->id }}"
+                                                    disabled>Quick
+                                                    Add</button>
+                                            @endif
+                                        @else
+                                            <a class="btn btn-danger py-3 btn-block w-100 text-white" href="{{ $item->affiliate_link }}" target="_blank"
+                                                title="{{ __('Buy Now') }}">{{ __('Buy Now') }}</a>
+                                        @endif
+                                    </div>
                                     <!-- floating content -->
                                 </div>
+
                                 <p class="text-muted fw-semibold mt-4 mb-3">
                                     <a class="text-muted" href="{{ route('front.product', $item->slug) }}">{{ Str::limit($item->name, 22) }}</a>
                                 </p>
@@ -539,30 +580,24 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-lg-center align-items-center">
                                 <div>
-                                    <img src="{{ asset('assets/frontend/images/hand.png') }}" alt="hand icons" class="img-fluid no-download" />
+                                    <img src="{{ asset('assets/images/cart-icon.svg') }}" alt="hand icons" class="img-fluid no-download" width="35" />
                                 </div>
                                 <div class="ms-5">
                                     <h5 class="text-dark heading-h6 fw-bold mb-1">
-                                        Free Delivery
+                                        Low Minimums
                                     </h5>
-                                    <p class="text-gray-700 text-base fs-16 mb-0">
-                                        For all order over ₹ 2000.00
-                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="d-flex justify-content-lg-center align-items-center">
                                 <div>
-                                    <img src="{{ asset('assets/frontend/images/return.png') }}" alt="hand icons" class="img-fluid no-download" />
+                                    <img src="{{ asset('assets/images/liquidity-icon.svg') }}" alt="hand icons" class="img-fluid no-download"  width="35" />
                                 </div>
                                 <div class="ms-5">
                                     <h5 class="text-dark heading-h6 fw-bold mb-1">
-                                        30 Days Return
+                                        Sustainable Solutions
                                     </h5>
-                                    <p class="text-gray-700 text-base fs-16 mb-0">
-                                        If goods have Problems
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -575,9 +610,6 @@
                                     <h5 class="text-dark heading-h6 fw-bold mb-1">
                                         Secure Payment
                                     </h5>
-                                    <p class="text-gray-700 text-base fs-16 mb-0">
-                                        100% secure payment
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -590,9 +622,6 @@
                                     <h5 class="text-dark heading-h6 fw-bold mb-1">
                                         24/7 Support
                                     </h5>
-                                    <p class="text-gray-700 text-base fs-16 mb-0">
-                                        Dedicated support
-                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -5,16 +5,15 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/clear', function() {
+Route::get('/clear', function () {
 
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
- 
+
     return "Cleared!";
- 
- });
+});
 
 Route::group(['middleware' => 'adminlocalize'], function () {
 
@@ -120,7 +119,7 @@ Route::group(['middleware' => 'adminlocalize'], function () {
             //------------ BRAND ------------
             Route::get('brand/status/{id}/{status}/{type}', 'Back\BrandController@status')->name('back.brand.status');
             Route::resource('brand', 'Back\BrandController', ['as' => 'back', 'except' => 'show']);
-            
+
             //------------ Catalogue ------------            
             Route::get('catalogue/status/{id}/{status}/{type}', 'Back\CatalogueController@status')->name('back.catalogue.status');
             Route::resource('catalogue', 'Back\CatalogueController', ['as' => 'back', 'except' => 'show']);
@@ -299,6 +298,16 @@ Route::group(['middleware' => 'adminlocalize'], function () {
             Route::delete('/sitemap/delete/{id}/', 'Back\SitemapController@delete')->name('admin.sitemap.delete');
             Route::post('/sitemap/download', 'Back\SitemapController@download')->name('admin.sitemap.download');
         });
+
+        // uploaded files
+        Route::any('uploaded-files/file-info', 'Back\HibaUploadController@file_info')->name('uploaded-files.info');
+        Route::resource('uploaded-files', 'Back\HibaUploadController');
+        Route::get('uploaded-files/destroy/{id}', 'Back\HibaUploadController@destroy')->name('uploaded-file.destroy');
+        Route::post('files-uploads', 'Back\HibaUploadController@show_uploader');
+        Route::post('uploader/upload', 'Back\HibaUploadController@upload');
+        Route::get('uploader/get_uploaded_files', 'Back\HibaUploadController@get_uploaded_files');
+        Route::post('uploader/get_file_by_ids', 'Back\HibaUploadController@get_preview_files');
+        Route::get('uploader/download/{id}', 'Back\HibaUploadController@attachment_download')->name('download_attachment');
     });
 
 
@@ -467,7 +476,7 @@ Route::group(['middleware' => 'maintainance'], function () {
         Route::get('/catalogue/{slug}', 'Front\FrontendController@catalogueInfo')->name('front.catalogue.info');
 
         Route::get('/coupons', 'Front\FrontendController@coupons')->name('front.coupons');
-                
+
         Route::get('/cache/clear', function () {
             Artisan::call('cache:clear');
             Artisan::call('config:clear');

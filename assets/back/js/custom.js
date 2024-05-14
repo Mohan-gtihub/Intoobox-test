@@ -209,29 +209,31 @@
 
         // editor
         if ($('.text-editor').length > 0) {
-
-            $('.text-editor').summernote({
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen']],
-                ],
-
-                callbacks: {
-                    onImageUpload: function (image) {
-                        uploadImage(image[0]);
-                    }
-                }
-
-            });
-
-
+    $('.text-editor').summernote({
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['Neue-Einstellung-Regular,sans-serif']], // Set default font family here
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']],
+        ],
+        callbacks: {
+            onImageUpload: function (image) {
+                uploadImage(image[0]);
+            }
+        },
+        onPaste: function (e) {
+                
+                var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                e.preventDefault();
+                document.execCommand('insertText', false, bufferText);
         }
+    });
+}
+
 
 
         function uploadImage(image) {

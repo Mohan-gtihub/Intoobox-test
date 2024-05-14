@@ -39,4 +39,5 @@ return array(
     'd7354eb4c8441fbf08eec280b61c7c73' => $vendorDir . '/rachidlaasri/laravel-installer/src/Helpers/functions.php',
     '13906c19e3d8fcd1341b24ed4d51cf72' => $vendorDir . '/razorpay/razorpay/Deprecated.php',
     '320163ac6b93aebe3dc25b60a0533d56' => $vendorDir . '/spatie/laravel-ignition/src/helpers.php',
+    'b4e3f29b106af37a2bb239f73cdf68c7' => $baseDir . '/app/helpers.php',
 );

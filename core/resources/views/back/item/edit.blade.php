@@ -49,16 +49,23 @@
                             <div class="form-group pb-0  mb-0">
                                 <label class="d-block">{{ __('Featured Image') }} *</label>
                             </div>
-                            <div class="form-group pb-0 pt-0 mt-0 mb-0">
-                                <img class="admin-img lg" src="{{ $item->photo ? asset('assets/images/' . $item->photo) : asset('assets/images/placeholder.png') }}">
-                            </div>
                             <div class="form-group position-relative ">
-                                <label class="file">
-                                    <input type="file" accept="image/*" class="upload-photo" name="photo" id="file" aria-label="File browser example">
-                                    <span class="file-custom text-left">{{ __('Upload Image...') }}</span>
-                                </label>
+                                <label class="text-sm"><small>{{ __('Image Size Should Be 800 x 800. or square size') }}</small></label>
+                                <div class="input-group" data-toggle="aizuploader" data-multiple="true">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">
+                                            {{ trans('Browse') }}</div>
+                                    </div>
+                                    <div class="form-control file-amount {{ $errors->has('photo') ? ' is-invalid' : '' }}">{{ trans('Choose File') }}</div>
+                                    <input type="hidden" name="photo" value="{{ isset($item) ? $item->photo : old('photo') }}" class="selected-files" required>
+                                    @if ($errors->has('photo'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('photo') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="file-preview"></div>
                                 <br>
-                                <span class="mt-1 text-info">{{ __('Image Size Should Be 800 x 800. or square size') }}</span>
                             </div>
                         </div>
                     </div>
@@ -67,34 +74,22 @@
                             <div class="form-group pb-0  mb-0">
                                 <label>{{ __('Gallery Images') }} </label>
                             </div>
-                            <div class="form-group pb-0 pt-0 mt-0 mb-0">
-                                <div id="gallery-images">
-                                    <div class="d-block gallery_image_view">
-
-                                        @forelse($item->galleries as $gallery)
-                                            <div class="single-g-item d-inline-block m-2">
-                                                <span data-toggle="modal" data-target="#confirm-delete" href="javascript:;" data-href="{{ route('back.item.gallery.delete', $gallery->id) }}"
-                                                    class="remove-gallery-img">
-                                                    <i class="fas fa-trash"></i>
-                                                </span>
-                                                <a class="popup-link" href="{{ $gallery->photo ? asset('assets/images/' . $gallery->photo) : asset('assets/images/placeholder.png') }}">
-                                                    <img class="admin-gallery-img" src="{{ $gallery->photo ? asset('assets/images/' . $gallery->photo) : asset('assets/images/placeholder.png') }}"
-                                                        alt="No Image Found">
-                                                </a>
-                                            </div>
-                                        @empty
-                                            <h6><b>{{ __('No Images Added') }}</b></h6>
-                                        @endforelse
+                            <div class="form-group">
+                                <label class="text-sm"><small>{{ __('Image Size Should Be 800 x 800. or square size') }}</small></label>
+                                <div class="input-group" data-toggle="aizuploader" data-multiple="true">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">
+                                            {{ trans('Browse') }}</div>
                                     </div>
+                                    <div class="form-control file-amount {{ $errors->has('galleries') ? ' is-invalid' : '' }}">{{ trans('Choose File') }}</div>
+                                    <input type="hidden" name="galleries" value="{{ isset($item) ? $item->galleries : old('galleries') }}" class="selected-files" required>
+                                    @if ($errors->has('galleries'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('galleries') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                            </div>
-                            <div class="form-group position-relative ">
-                                <label class="file">
-                                    <input type="file" accept="image/*" name="galleries[]" id="gallery_file" aria-label="File browser example" accept="image/*" multiple>
-                                    <span class="file-custom text-left">{{ __('Upload Image...') }}</span>
-                                </label>
-                                <br>
-                                <span class="mt-1 text-info">{{ __('Image Size Should Be 800 x 800. or square size') }}</span>
+                                <div class="file-preview"></div>
                             </div>
                         </div>
                     </div>
@@ -128,10 +123,10 @@
                                 </label>
                             </div>
                             @php
-                                $bulk_discounts = json_decode($item->bulk_discount); 
+                                $bulk_discounts = json_decode($item->bulk_discount);
                             @endphp
                             <div id="discount-items-section" class="{{ $item->is_bulk_discount == 0 ? 'd-none' : '' }}">
-                                @if ($bulk_discounts && count($bulk_discounts)>0)
+                                @if ($bulk_discounts && count($bulk_discounts) > 0)
                                     @foreach ($bulk_discounts as $discount)
                                         <div class="d-flex">
                                             <div class="flex-grow-1">

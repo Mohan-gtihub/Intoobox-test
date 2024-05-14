@@ -686,59 +686,59 @@ $(function ($) {
         //     }
         // });
 
-        // $(document).on('click', '.subclick', function () {
-        //     var $input = $(this).parent().find('.cart-qty');
-        //     var currentVal = parseInt($input.val());
-        //     let current_qty = currentVal; // This is redundant since `currentVal` already holds this value
-        //     var minQty = parseInt($input.attr('min')) || 1; // Ensure there's a fallback if min attribute is not set
-        //     let multiple = parseInt($('.decrement').data('multiple')) || 1; // Ensure there's a fallback if multiple is not set
+        $(document).on('click', '.subclick', function () {
+            var $input = $(this).parent().find('.cart-qty');
+            var currentVal = parseInt($input.val());
+            let current_qty = currentVal; // This is redundant since `currentVal` already holds this value
+            var minQty = parseInt($input.attr('min')) || 1; // Ensure there's a fallback if min attribute is not set
+            let multiple = parseInt($('.decrement').data('multiple')) || 1; // Ensure there's a fallback if multiple is not set
         
-        //     // Check if the current quantity minus multiple is at least the minimum quantity allowed
-        //     if (current_qty - multiple >= minQty) {
-        //         $input.val(current_qty - multiple); // Update the input field, not '.cart-amount'
-        //     } else {
-        //         $input.val(minQty); // Reset to minQty if subtraction goes below minQty
-        //         dangerNotification('Minimum Quantity Must Be ' + minQty); // Show notification with correct minQty
-        //     }
-        // });
+            // Check if the current quantity minus multiple is at least the minimum quantity allowed
+            if (current_qty - multiple >= minQty) {
+                $input.val(current_qty - multiple); // Update the input field, not '.cart-amount'
+            } else {
+                $input.val(minQty); // Reset to minQty if subtraction goes below minQty
+                dangerNotification('Minimum Quantity Must Be ' + minQty); // Show notification with correct minQty
+            }
+        });
 
-        // // Product quantity select JavaScript for incrementing
-        // // $(document).on('click', '.addclick', function () {
-        // $(document).on("click", ".addclick", function () {
-        //     var $input = $(this).parent().find('.cart-qty');
-        //     var currentVal = parseInt($input.val());
-        //     let current_stock = parseInt($('#current_stock').val());
-        //     let current_qty = currentVal;
-        //     let multiple = parseInt($(this).data('multiple')); // Ensure 'multiple' data attribute is set correctly in HTML
+        // Product quantity select JavaScript for incrementing
+        // $(document).on('click', '.addclick', function () {
+        $(document).on("click", ".addclick", function () {
+            var $input = $(this).parent().find('.cart-qty');
+            var currentVal = parseInt($input.val());
+            let current_stock = parseInt($('#current_stock').val());
+            let current_qty = currentVal;
+            let multiple = parseInt($(this).data('multiple')); // Ensure 'multiple' data attribute is set correctly in HTML
 
-        //     // Check if current quantity plus multiple is within stock limits
-        //     if (current_qty + multiple <= current_stock) {
-        //         $('.cart-amount').val(current_qty + multiple);
-        //     } else {
-        //         $('.cart-amount').val(current_stock); // Set to max stock if addition goes over
-        //         dangerNotification('Product Quantity Maximum ' + current_stock); // Display a warning if stock limits are reached
-        //     }
-        // });
+            // Check if current quantity plus multiple is within stock limits
+            if (current_qty + multiple <= current_stock) {
+                $('.cart-amount').val(current_qty + multiple);
+            } else {
+                $('.cart-amount').val(current_stock); // Set to max stock if addition goes over
+                dangerNotification('Product Quantity Maximum ' + current_stock); // Display a warning if stock limits are reached
+            }
+        });
 
 
 
-        // $(document).on('keyup', '.cart-amount', function () {
-        //     let current_stock = parseInt($('#current_stock').val());
-        //     let key_val = parseInt($(this).val());
+        $(document).on('keyup', '.cart-amount', function () {
+            let current_stock = parseInt($('#current_stock').val());
+            let key_val = parseInt($(this).val());
 
-        //     if (key_val > current_stock) {
-        //         error('Product Maximum Quantity ' + current_stock);
-        //         $('.cart-amount').val(current_stock);
-        //     }
-        //     if (key_val <= 0) {
-        //         $('.cart-amount').val(1);
-        //         error('Product Minimum Quantity' + 1);
-        //     }
-        //     if (key_val > 0 && key_val < current_stock) {
-        //         $('.cart-amount').val(key_val);
-        //     }
+            if (key_val > current_stock) {
+                error('Product Maximum Quantity ' + current_stock);
+                $('.cart-amount').val(current_stock);
+            }
+            if (key_val <= 0) {
+                $('.cart-amount').val(1);
+                error('Product Minimum Quantity' + 1);
+            }
+            if (key_val > 0 && key_val < current_stock) {
+                $('.cart-amount').val(key_val);
+            }
 
-        // })
+        })
 
 
         $(document).on('click', '.wishlist_store', function (e) {

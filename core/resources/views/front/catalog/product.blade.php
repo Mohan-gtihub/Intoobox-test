@@ -15,24 +15,24 @@
 
 @section('content')
     <section class="cart-section my-6 my-lg-8">
-            <!-- product breadcrumb -->
-            <div class="container">
-                <h2 class="mb-0 text-center fw-bold text-dark heading-h2">
-                    Product Details
-                </h2>
-                <div class="d-flex align-items-center justify-content-center mt-4">
-                    <div>
-                        <a href="{{ route('front.index') }}" class="fs-16 fw text-dark"> Home </a>
-                    </div>
-                    <div class="text-gray-700 ms-2">-</div>
-                    <div>
-                        <a href="#" class="fs-16 ms-2 fw text-dark"> Shop </a>
-                    </div>
-                    <div class="text-gray-700 ms-2">-</div>
-                    <p class="text-gray-700 ms-2 mb-0">{{ $item->name }}</p>
+        <!-- product breadcrumb -->
+        <div class="container">
+            <h2 class="mb-0 text-center fw-bold text-dark heading-h2">
+                Product Details
+            </h2>
+            <div class="d-flex align-items-center justify-content-center mt-4">
+                <div>
+                    <a href="{{ route('front.index') }}" class="fs-16 fw text-dark"> Home </a>
                 </div>
+                <div class="text-gray-700 ms-2">-</div>
+                <div>
+                    <a href="#" class="fs-16 ms-2 fw text-dark"> Shop </a>
+                </div>
+                <div class="text-gray-700 ms-2">-</div>
+                <p class="text-gray-700 ms-2 mb-0">{{ $item->name }}</p>
             </div>
-            <!-- product breadcrumb -->
+        </div>
+        <!-- product breadcrumb -->
     </section>
 
     <!-- single product section -->
@@ -61,12 +61,18 @@
                     @endif
                     <div class="product-thumbnails insize">
                         <div class="product-details-slider owl-carousel">
-                            <div class="item">
-                                <img class="no-download" src="{{ asset('assets/images/' . $item->photo) }}" alt="zoom" />
-                            </div>
-                            @foreach ($galleries->take(4) as $gallery)
+                            
+                            @php
+                                $photos = [];
+                            @endphp
+                            @if ($item->galleries != null)
+                                @php
+                                    $photos = explode(',', $item->galleries);
+                                @endphp
+                            @endif
+                            @foreach ($photos as $key => $photo)
                                 <div class="item">
-                                    <img class="no-download" src="{{ asset('assets/images/' . $gallery->photo) }}" alt="zoom" />
+                                    <img class="no-download" src="{{ uploaded_asset($photo) }}" alt="zoom" />
                                 </div>
                             @endforeach
                         </div>
@@ -77,7 +83,7 @@
                 @endphp
                 @if (count($itemDetails) > 0)
                     <div class="mt-8 mt-lg-12">
-                        <h5 class="fw-medium mb-4">Bulk Deal</h5>
+                        <h5 class="fw-medium mb-4">BULK DEAL</h5>
                         <table class="table border rounded-2">
                             <thead>
                                 <tr>
@@ -149,13 +155,14 @@
                         <small class="d-inline-block"><del>{{ PriceHelper::setPreviousPrice($item->previous_price) }}</del></small>
                     @endif
                 </h5>
-                <div class="mt-7">
+                <div class="w-lg-75">
+                    <div class="mt-7">
                     @foreach ($attributes as $attribute)
                         @if ($attribute->options->count() != 0)
-                            <div class="mb-6 d-flex justify-content-between">
-                                <label for="{{ $attribute->name }}" class="options-label left-titles w-25">{{ $attribute->name }}</label>
-                                <span class="ms-8 text-dark fs-16  w-25">:</span>
-                                <select class="form-control ms-8 fs-16 attribute_option w-50" id="{{ $attribute->name }}">
+                            <div class="mb-6 d-flex align-items-center justify-content-between">
+                                <label for="{{ $attribute->name }}" class="options-label left-titles">{{ $attribute->name }}</label>
+                                <span class="text-dark fs-16 ">:</span>
+                                <select class="form-control fs-16 attribute_option w-50" id="{{ $attribute->name }}">
                                     @foreach ($attribute->options->where('stock', '!=', '0') as $option)
                                         <option value="{{ $option->name }}" data-type="{{ $attribute->id }}" data-href="{{ $option->id }}"
                                             data-target="{{ PriceHelper::setConvertPrice($option->price) }}">
@@ -179,9 +186,9 @@
                             <input type="hidden" value="3333" id="current_stock">
                         </div>
                     @endif
-                    <div class="ms-4">
+                    <div class="ms-6 flex-grow-1">
                         @if ($item->is_stock())
-                            <button class="btn px-8 py-4 border-0 text-white text-uppercase rounded rounded-lg-0 d-flex align-items-center justify-content-center btn-danger" id="add_to_cart"><span
+                            <button class="btn px-6 py-4 border-0 text-white w-100 text-uppercase rounded rounded-lg-0 d-flex align-items-center justify-content-center btn-danger" id="add_to_cart"><span
                                     class="d-none d-md-block">Add to Cart</span><span class="d-block d-md-none"><svg class="" width="25" height="31" viewBox="0 0 25 31" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -189,14 +196,42 @@
                                             fill="#ffffff"></path>
                                     </svg></span></button>
                         @else
-                            <button class="btn px-8 py-4 border-0 text-white text-uppercase rounded-0 d-flex align-items-center justify-content-center btn-danger" id="add_to_cart"
+                            <button class="btn px-6 py-4 border-0 text-white text-uppercase rounded-0 d-flex align-items-center justify-content-center btn-danger" id="add_to_cart"
                                 disabled>{{ __('Out of stock') }}</button>
                         @endif
                     </div>
-                    <div class="ms-4">
+                    <div class="ms-6">
                         <a class="btn btn-gray wishlist_store wishlist_text bg-gray-100 py-3 px-4" href="{{ route('user.wishlist.store', $item->id) }}"><i
                                 class="fa-regular fa-heart text-muted fs-24"></i></a>
                     </div>
+                </div>
+               
+                <div class="my-12 my-lg-8 devider"></div>
+                <div class=" d-flex justify-content-between">
+                    <span class="text-dark fs-16 left-titles"> Availability </span>
+                    <span class="text-dark fs-16"> : </span>
+                    @if ($item->is_stock())
+                        <span class="text-success text-success fs-16 text-start w-50">{{ __('In Stock') }}</span>
+                    @else
+                        <span class="text-danger text-success fs-16 text-start w-50">{{ __('Out of stock') }}</span>
+                    @endif
+                </div>
+                <div class="mt-5 d-flex justify-content-between">
+                    <span class="text-dark fs-16 left-titles"> Dimensions </span>
+                    <span class="text-dark fs-16 "> : </span>
+                    <span class="text-muted fs-16 text-start  w-50">W 4.0” D 4.0” H 3.0” </span>
+                </div>
+                <div class="mt-5 d-flex justify-content-between">
+                    <span class="text-dark fs-16 left-titles"> SKU </span>
+                    <span class="text-dark fs-16"> : </span>
+                    <span class="text-muted fs-16 text-start  w-50">{{ $item->sku }}</span>
+                </div>
+                </div>
+
+                <div class="mt-5 mt-lg-8 devider"></div>
+                <div class="mt-5">
+                    <h5 class="fw-medium mb-4">DESCRIPTION</h5>
+                    <p class="text-muted" style="text-align: justify;"> {{ $item->sort_details }}</p>
                 </div>
                 <style>
                     .left-titles {
@@ -204,28 +239,6 @@
                         display: inline-block;
                     }
                 </style>
-                <div class="my-12 my-lg-8 devider"></div>
-                <div class=" d-flex justify-content-between">
-                    <span class="text-dark fs-16 left-titles  w-25"> Availability </span>
-                    <span class="ms-8 text-dark fs-16 w-25"> : </span>
-                    @if ($item->is_stock())
-                        <span class="text-success ms-8 text-success fs-16 w-50">{{ __('In Stock') }}</span>
-                    @else
-                        <span class="text-danger ms-8 text-success fs-16 w-50">{{ __('Out of stock') }}</span>
-                    @endif
-                </div>
-                <div class="mt-5 d-flex justify-content-between">
-                    <span class="text-dark fs-16 left-titles  w-25"> Dimensions </span>
-                    <span class="ms-8 text-dark fs-16 w-25"> : </span>
-                    <span class="ms-8 text-muted fs-16 w-50">W 4.0” D 4.0” H 3.0” </span>
-                </div>
-
-                <div class="mt-5 mt-lg-8 devider"></div>
-                <div class="mt-5">
-                    <h5 class="fw-medium mb-4">DESCRIPTION</h5>
-                    <p class="text-muted"> {{ $item->sort_details }}</p>
-                </div>
-
                 <div>
                 </div>
 
@@ -239,7 +252,7 @@
         <ul class="nav nav-tabs text-center" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description"
-                    aria-selected="false">Descriptions</a>
+                    aria-selected="false">Product Description</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="specification-tab" data-bs-toggle="tab" data-bs-target="#specification" type="button" role="tab" aria-controls="specification"
@@ -251,8 +264,7 @@
         </ul>
         <div class="tab-content px-0">
             <div class="tab-pane fade active show" id="description" role="tabpanel" aria-labelledby="description-tab">
-                <div>
-                    <h6 class="heading-h6 fw-bold text-capitalize"> Products Information </h6>
+                <div style="text-align: justify;">
                     {!! $item->details !!}
                 </div>
             </div>
@@ -397,14 +409,25 @@
                     <div class="relatedproductslider owl-carousel">
 
                         @foreach ($related_items as $related)
+                            @php
+                                $thumbs = [];
+                            @endphp
+                            @if ($related->photo != null)
+                                @php
+                                    $thumbs = explode(',', $related->photo);
+                                @endphp
+                            @endif
                             <div class="slider-item">
                                 <div class="d-flex flex-column prod-column align-items-center position-relative overflow-hidden">
                                     <div class="position-relative overflow-hidden">
                                         <a href="{{ route('front.product', $related->slug) }}">
-
-                                            <img data-src="{{ asset('assets/images/' . $related->thumbnail) }}"
-                                                data-src-2="{{ $related->galleries && count($related->galleries) > 0 ? asset('assets/images/' . $related->galleries[0]->photo) : '' }}" alt="Image 1"
-                                                class="img-fluid cat-prod-img lazy no-download rounded" /></a>
+                                            <img @foreach ($thumbs as $key => $thumb)
+                                            @if ($key === 0)
+                                            data-src="{{ uploaded_asset($thumb) }}"
+                                            @else
+                                                data-src-2="{{ uploaded_asset($thumb) }}"
+                                                @endif @endforeach
+                                                alt="Image 1" class="img-fluid cat-prod-img lazy no-download rounded" /></a>
                                         <!-- floating content -->
                                         <div class="position-absolute cart-actions text-white fw-bold fs-14 mb-0">
                                             <div class="action-btn shadow-lg">
@@ -542,30 +565,24 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="d-flex justify-content-lg-center align-items-center">
                             <div>
-                                <img src="{{ asset('assets/frontend/images/hand.png') }}" alt="hand icons" class="img-fluid no-download" />
+                                <img src="{{ asset('assets/images/cart-icon.svg') }}" alt="hand icons" class="img-fluid no-download" width="35" />
                             </div>
                             <div class="ms-5">
                                 <h5 class="text-dark heading-h6 fw-bold mb-1">
-                                    Free Delivery
+                                    Low Minimums
                                 </h5>
-                                <p class="text-gray-700 text-base fs-16 mb-0">
-                                    For all order over ₹ 2000.00
-                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="d-flex justify-content-lg-center align-items-center">
                             <div>
-                                <img src="{{ asset('assets/frontend/images/return.png') }}" alt="hand icons" class="img-fluid no-download" />
+                                <img src="{{ asset('assets/images/liquidity-icon.svg') }}" alt="hand icons" class="img-fluid no-download"  width="35" />
                             </div>
                             <div class="ms-5">
                                 <h5 class="text-dark heading-h6 fw-bold mb-1">
-                                    30 Days Return
+                                    Sustainable Solutions
                                 </h5>
-                                <p class="text-gray-700 text-base fs-16 mb-0">
-                                    If goods have Problems
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -578,9 +595,6 @@
                                 <h5 class="text-dark heading-h6 fw-bold mb-1">
                                     Secure Payment
                                 </h5>
-                                <p class="text-gray-700 text-base fs-16 mb-0">
-                                    100% secure payment
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -593,9 +607,6 @@
                                 <h5 class="text-dark heading-h6 fw-bold mb-1">
                                     24/7 Support
                                 </h5>
-                                <p class="text-gray-700 text-base fs-16 mb-0">
-                                    Dedicated support
-                                </p>
                             </div>
                         </div>
                     </div>

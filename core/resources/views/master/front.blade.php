@@ -427,7 +427,7 @@ body_theme4 @endif
             </div>
         </div>
         <!--mobile top nav -->
-        <div class="container-fluid d-flex d-md-none container-5xl position-relative top-nav px-4 py-4" id="navbar">
+        <div class="container-fluid d-flex d-md-none container-5xl position-relative top-nav px-4 py-4">
             <div class="d-flex align-items-center justify-content-between">
                 <div id="navbarIcon" class="d-flex justify-content-center category-menu">
                     <i class="fas fa-bars fs-24 text-muted"></i>
@@ -441,30 +441,43 @@ body_theme4 @endif
                     <img src="{{ asset('assets/frontend/images/logo-main.png') }}" alt="Logo" class="logo-mobile" />
                 </div>
                 <div class="position-relative cart-icons">
-                    <i class="fa-regular fa-heart ms-3 ms-lg-6 fs-28 text-gray-600"></i>
-                    <span> 1 </span>
+                    @if (Auth::check())
+                    <a href="{{ route('user.wishlist.index') }}">
+                        <i class="fa-regular fa-heart ms-3 ms-lg-6 fs-28 text-gray-600"></i>
+                        <span class="count-label wishlist_count"> {{ Auth::user()->wishlists->count() }}
+                        </span>
+                    </a>
+                    @else
+                    <a href="{{ route('user.wishlist.index') }}">
+                        <i class="fa-regular fa-heart ms-3 ms-lg-6 fs-28 text-gray-600"></i>
+                        <span class="count-label wishlist_count"> 0
+                        </span>
+                    </a>
+                    @endif
                 </div>
                 <div class="position-relative cart-icons">
-                    <svg class="ms-4 ms-lg-6" width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M2.8 28C2.03 28 1.3706 27.7256 0.821802 27.1768C0.273002 26.628 -0.000930956 25.9691 2.37691e-06 25.2V8.4C2.37691e-06 7.63 0.274402 6.9706 0.823202 6.4218C1.372 5.873 2.03094 5.59907 2.8 5.6H5.6C5.6 4.06 6.14833 2.74167 7.245 1.645C8.34167 0.548333 9.66 0 11.2 0C12.74 0 14.0583 0.548333 15.155 1.645C16.2517 2.74167 16.8 4.06 16.8 5.6H19.6C20.37 5.6 21.0294 5.8744 21.5782 6.4232C22.127 6.972 22.4009 7.63093 22.4 8.4V25.2C22.4 25.97 22.1256 26.6294 21.5768 27.1782C21.028 27.727 20.3691 28.0009 19.6 28H2.8ZM2.8 25.2H19.6V8.4H16.8V11.2C16.8 11.5967 16.6656 11.9294 16.3968 12.1982C16.128 12.467 15.7957 12.6009 15.4 12.6C15.0033 12.6 14.6706 12.4656 14.4018 12.1968C14.133 11.928 13.9991 11.5957 14 11.2V8.4H8.4V11.2C8.4 11.5967 8.2656 11.9294 7.9968 12.1982C7.728 12.467 7.39573 12.6009 7 12.6C6.60333 12.6 6.2706 12.4656 6.0018 12.1968C5.733 11.928 5.59907 11.5957 5.6 11.2V8.4H2.8V25.2ZM8.4 5.6H14C14 4.83 13.7256 4.1706 13.1768 3.6218C12.628 3.073 11.9691 2.79907 11.2 2.8C10.43 2.8 9.7706 3.0744 9.2218 3.6232C8.673 4.172 8.39907 4.83093 8.4 5.6Z"
-                            fill="#707070" />
-                    </svg>
-                    <span> 3 </span>
+                    <a data-bs-toggle="offcanvas" href="#cartOffcanvas" role="button" aria-controls="cartOffcanvas">
+                        <svg class="ms-4 ms-lg-6" width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M2.8 28C2.03 28 1.3706 27.7256 0.821802 27.1768C0.273002 26.628 -0.000930956 25.9691 2.37691e-06 25.2V8.4C2.37691e-06 7.63 0.274402 6.9706 0.823202 6.4218C1.372 5.873 2.03094 5.59907 2.8 5.6H5.6C5.6 4.06 6.14833 2.74167 7.245 1.645C8.34167 0.548333 9.66 0 11.2 0C12.74 0 14.0583 0.548333 15.155 1.645C16.2517 2.74167 16.8 4.06 16.8 5.6H19.6C20.37 5.6 21.0294 5.8744 21.5782 6.4232C22.127 6.972 22.4009 7.63093 22.4 8.4V25.2C22.4 25.97 22.1256 26.6294 21.5768 27.1782C21.028 27.727 20.3691 28.0009 19.6 28H2.8ZM2.8 25.2H19.6V8.4H16.8V11.2C16.8 11.5967 16.6656 11.9294 16.3968 12.1982C16.128 12.467 15.7957 12.6009 15.4 12.6C15.0033 12.6 14.6706 12.4656 14.4018 12.1968C14.133 11.928 13.9991 11.5957 14 11.2V8.4H8.4V11.2C8.4 11.5967 8.2656 11.9294 7.9968 12.1982C7.728 12.467 7.39573 12.6009 7 12.6C6.60333 12.6 6.2706 12.4656 6.0018 12.1968C5.733 11.928 5.59907 11.5957 5.6 11.2V8.4H2.8V25.2ZM8.4 5.6H14C14 4.83 13.7256 4.1706 13.1768 3.6218C12.628 3.073 11.9691 2.79907 11.2 2.8C10.43 2.8 9.7706 3.0744 9.2218 3.6232C8.673 4.172 8.39907 4.83093 8.4 5.6Z"
+                                fill="#707070" />
+                        </svg>
+                        <span class="count-label cart_count">{{ Session::has('cart') ? count(Session::get('cart')) : '0' }}</span>
+                    </a>
                 </div>
             </div>
         </div>
         <!--mobile top nav -->
         <!-- top nav -->
         <!-- center navigation -->
-            <div class="center-category-nav d-none d-lg-block mx-auto py-4 py-lg-4 w-lg-100 border-bottom ">
+        <div class="cetner-category-nav d-none d-lg-block mx-auto py-4 py-lg-4 w-lg-100 border-bottom ">
             <ul class="d-flex cat-list center-nav ps-0 mb-0 align-items-center justify-content-center">
                 @php $mainCategoryCount = 0; @endphp
 
                 @foreach ($categories as $mainCategory)
                     @if ($mainCategoryCount < 9)
                         <li class="ms-6 cat-list-item position-relative">
-                            <a href="{{ route('front.catalog') . '?category=' . $mainCategory->slug }}" class="text-dark main-link fs-14">
+                            <a href="{{ route('front.catalog') . '?category=' . $mainCategory->slug }}" class="text-dark main-link fs-14 fw-bold">
                                 {{ $mainCategory->name }}
                             </a>
                             @if ($mainCategory->subcategory->count() > 0)
@@ -805,8 +818,8 @@ body_theme4 @endif
                     </li>
                 @endif
                 <li class="btn-menu-item">
-                    <a href="{{ route('fornt.compare.index') }}" class="d-flex flex-column align-items-center justify-content-center">
-                        <i class="fa-regular fa-user ms-3 ms-lg-6 fs-28 text-gray-600"></i>
+                    <a href="{{ route('user.profile') }}" class="d-flex flex-column align-items-center justify-content-center">
+                        <i class="fa-regular fa-user fs-28 text-gray-600"></i>
                         <span class="mt-1 d-block"> Profile </span>
                     </a>
                 </li>

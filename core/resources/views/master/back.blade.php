@@ -6,7 +6,9 @@
     <title>{{ $setting->title }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/' . $setting->favicon) }}" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="app-url" content="{{url('/admin')}}/">
+    <meta name="file-base-url" content="{{url('/')}}/">
     <!-- Fonts and icons -->
     <script src="{{ asset('assets/back/js/plugin/webfont/webfont.min.js') }}"></script>
     <script id="setFont" data-src="{{ asset('assets/back/css/fonts.css') }}"
@@ -22,6 +24,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/back/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/back/css/bilal.css') }}">
 
 
     @if (DB::table('languages')->where('type', 'Dashboard')->where('is_default', 1)->first()->rtl == 1)
@@ -29,7 +32,31 @@
     @endif
 
     @yield('styles')
-
+    <script>
+        var AIZ = AIZ || {};
+        AIZ.local = {
+            nothing_selected: '{{ trans('Nothing selected') }}',
+            nothing_found: '{{ trans('Nothing found') }}',
+            choose_file: '{{ trans('Choose file') }}',
+            file_selected: '{{ trans('File selected') }}',
+            files_selected: '{{ trans('Files selected') }}',
+            add_more_files: '{{ trans('Add more files') }}',
+            adding_more_files: '{{ trans('Adding more files') }}',
+            drop_files_here_paste_or: '{{ trans('Drop files here, paste or') }}',
+            browse: '{{ trans('Browse') }}',
+            upload_complete: '{{ trans('Upload complete') }}',
+            upload_paused: '{{ trans('Upload paused') }}',
+            resume_upload: '{{ trans('Resume upload') }}',
+            pause_upload: '{{ trans('Pause upload') }}',
+            retry_upload: '{{ trans('Retry upload') }}',
+            cancel_upload: '{{ trans('Cancel upload') }}',
+            uploading: '{{ trans('Uploading') }}',
+            processing: '{{ trans('Processing') }}',
+            complete: '{{ trans('Complete') }}',
+            file: '{{ trans('File') }}',
+            files: '{{ trans('Files') }}',
+        }
+    </script>
 </head>
 
 <body>
@@ -183,9 +210,10 @@
         var summernot_upload_url = '{{ route('back.summernote.image.upload') }}';
     </script>
     <!--   Core JS Files   -->
-    <script src="{{ asset('assets/back/js/core/jquery.3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets/back/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/back/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/back/js/vendors.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/back/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/back/js/core/bootstrap.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/back/js/hiba-core.js') }}"></script>
 
     <!-- jQuery UI -->
     <script src="{{ asset('assets/back/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>

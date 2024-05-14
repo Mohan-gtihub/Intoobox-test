@@ -519,10 +519,10 @@ class CheckoutController extends Controller
                 }
 
                 // Assuming you have a method to get the Shiprocket token
-                $token = Shiprocket::getToken();
+                // $token = Shiprocket::getToken();
                 
-                // // Assuming Shiprocket::order() accepts an array of orders
-                $response = Shiprocket::order($token)->create($orderDetails);
+                // // // Assuming Shiprocket::order() accepts an array of orders
+                // $response = Shiprocket::order($token)->create($orderDetails);
             //   dd($response);
         }
 

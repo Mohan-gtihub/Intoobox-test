@@ -25,13 +25,7 @@ class ItemRepository
     {
         
         $input = $request->all();
-        if ($file = $request->file('photo')) {
-            $images_name = ImageHelper::ItemhandleUploadedImage($request->file('photo'),'assets/images');
-
-            $input['photo'] = $images_name[0];
-            $input['thumbnail'] = $images_name[1];
-        }
-
+        
         $curr = Currency::where('is_default',1)->first();
         $input['discount_price'] = $request->discount_price / $curr->value;
         $input['previous_price'] = $request->previous_price / $curr->value;
@@ -63,7 +57,7 @@ class ItemRepository
         }
 
         if($request->has('is_bulk_discount')){
-            $itmes = $request->items;
+            $itmes = $request->itmes;
             $price = $request->price;
             $data = [];
             foreach ($itmes as $index => $itm) {
@@ -129,14 +123,6 @@ class ItemRepository
     public function update($item,$request)
     {
         $input = $request->all();
-
-        if ( $request->file('photo')) {
-
-            $images_name = ImageHelper::ItemhandleUpdatedUploadedImage($request->photo,'/assets/images',$item,'/assets/images/','photo');
-            $input['photo'] = $images_name[0];
-            $input['thumbnail'] = $images_name[1];
-        }
-
 
         if($request->has('meta_keywords')){
             $input['meta_keywords'] = str_replace(["value", "{", "}", "[","]",":","\""], '', $request->meta_keywords);
@@ -222,9 +208,7 @@ class ItemRepository
         }
 
         $item->update($input);
-        if(isset($input['galleries'])){
-            $this->galleriesUpdate($request,$item->id);
-        }
+        
     }
 
     public function highlight($item,$request)

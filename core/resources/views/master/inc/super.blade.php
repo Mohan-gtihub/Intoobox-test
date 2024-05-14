@@ -125,6 +125,13 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a  href="{{ route('uploaded-files.index') }}">
+            <i class="fas fa-images"></i>
+          <p>{{ __('Files') }}</p>
+        </a>
+    </li>
+
    
     <li class="nav-item">
         <a  href="{{ route('back.catalogue.index') }}">

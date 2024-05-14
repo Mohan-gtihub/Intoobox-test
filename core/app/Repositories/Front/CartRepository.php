@@ -39,8 +39,8 @@ class CartRepository
             ->first();
 
         $qty = is_numeric($qty) ? $qty : 1;
-        
-        
+
+
         if ($input['options_ids']) {
             foreach (explode(',', $input['options_ids']) as $optionId) {
                 $option = AttributeOption::findOrFail($optionId);
@@ -161,12 +161,15 @@ class CartRepository
         $cart = Session::get('cart');
         // if cart is empty then this the first product
         if (!$cart || !isset($cart[$item->id . '-' . $cart_item_key])) {
-
-            $applied_price = ($item->bulk_discount) ? $this->getBulkPrice($qty, $item) : $item->discount_price;
+            if ($item->bulk_discount) {
+                $applied_price = $this->getBulkPrice($qty, $item);
+            } else {
+                $applied_price = $item->discount_price;
+            }
             $license_name = json_decode($item->license_name, true);
             $license_key = json_decode($item->license_name, true);
-            
-            
+
+
             $cart[$item->id . '-' . $cart_item_key] = [
                 'options_id' => $option_id,
                 'attribute' => $attribute,
@@ -198,14 +201,15 @@ class CartRepository
         if (isset($cart[$item->id . '-' . $cart_item_key])) {
 
             $cart = Session::get('cart');
+            $applied_price = $item->bulk_discount ? $this->getBulkPrice($qty, $item) : $item->discount_price;
 
             if ($qty_check == 1) {
                 $cart[$item->id . '-' . $cart_item_key]['qty'] =  $qty;
             } else {
                 $cart[$item->id . '-' . $cart_item_key]['qty'] +=  $qty;
             }
-            
-            $cart[$item->id . '-' . $cart_item_key]['main_price'] = $this->getBulkPrice($cart[$item->id . '-' . $cart_item_key]['qty'], $item);
+
+            $cart[$item->id . '-' . $cart_item_key]['main_price'] = $applied_price;
 
             Session::put('cart', $cart);
 
@@ -225,49 +229,54 @@ class CartRepository
 
     public function getBulkPrice($qty, $item)
     {
-        
-        if($item->bulk_discount){
-            $bulk_discounts = json_decode($item->bulk_discount, true); // Decoding as associative array
+        $default_price = $item->discount_price; // Assuming $item is an object
+        $bulk_discounts = json_decode($item->bulk_discount, true); // Decoding as associative array
         foreach ($bulk_discounts as $discount) {
             if ($qty >= $discount['items']) { // Access array by key
                 return $discount['price'];
             }
         }
-        }else{
-        
-        return $item->discount_price;
-        }
+        return $default_price;
     }
 
     public function promoStore($request)
     {
-
         $input = $request->all();
         $promo_code = PromoCode::where('status', 1)->whereCodeName($input['code'])->where('no_of_times', '>', 0)->first();
 
-
         if ($promo_code) {
+            // Check if coupon has already been applied
+            $appliedCoupon = Session::get('coupon');
+
+            if ($appliedCoupon) {
+                return [
+                    'status' => false,
+                    'message' => __('Coupon already applied. Remove existing coupon to apply a new one.')
+                ];
+            }
+
             $cart = Session::get('cart');
             $cartTotal = PriceHelper::cartTotal($cart, 2);
             $discount = $this->getDiscount($promo_code->discount, $promo_code->type, $cartTotal);
 
             $coupon = [
                 'discount' => $discount['sub'],
-                'code'  => $promo_code
+                'code' => $promo_code
             ];
             Session::put('coupon', $coupon);
 
             return [
-                'status'  => true,
-                'message' => __('Promo code found!')
+                'status' => true,
+                'message' => __('Promo code applied successfully.')
             ];
         } else {
             return [
-                'status'  => false,
-                'message' => __('No coupon code found')
+                'status' => false,
+                'message' => __('Invalid or expired coupon code.')
             ];
         }
     }
+
 
 
 
