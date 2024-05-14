@@ -28,7 +28,7 @@
 
 									@include('alerts.alerts')
 
-                                    <div class="row justify-content-center">
+                                    <div class="row justify-content-center" id="startalert">
 
                                         <div class="col-lg-8">
 
@@ -55,7 +55,7 @@
                                                 </div>
 
                                                 <div class="image-show {{ $setting->is_announcement == 1 ? '' : 'd-none' }}">
-
+ 
                                                     <div class="form-group">
                                                         <label for="name">{{ __('Image') }}</label>
                                                         <div class="col-lg-12 pb-1">

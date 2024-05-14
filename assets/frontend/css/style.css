@@ -600,7 +600,8 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
     #heroimg{
         width: 2560px;
     }
+    #startalert{
+        width: 100%;
+    }
 }
-.w-lg-75{
-    
-}
+
