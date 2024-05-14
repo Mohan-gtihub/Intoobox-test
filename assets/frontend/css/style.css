@@ -611,8 +611,9 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 #luxpadd{
     padding-top: 45px;
 }
-@media(max-width:1440px) {
+
+@media(max-width:1440px){
     #marqimg{
-        height: auto!important;
+        width: fit-content;
     }
 }

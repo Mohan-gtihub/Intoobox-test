@@ -640,8 +640,8 @@
             <div class="py-12 py-lg-60 w-100 w-lg-90 container w-5xl-100 mx-auto">
                 <div class="brand-slider owl-carousel">
                     @foreach ($brands as $brand)
-                        <div class="slider-item py-2 logo-wrap d-flex justify-content-center">
-                            <img class="d-block hi-50 lazy no-download" src="{{ asset('assets/images/' . $brand->photo) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}" id="marqimg">
+                        <div class="slider-item py-2 logo-wrap d-flex justify-content-center"id="marqimg">
+                            <img class="d-block hi-50 lazy no-download" src="{{ asset('assets/images/' . $brand->photo) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}">
                         </div>
                     @endforeach
                 </div>
