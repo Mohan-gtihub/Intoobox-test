@@ -375,7 +375,7 @@
 
 
         <!-- gift box section starts here -->
-        <section class="gift-section p-4 py-lg-12 py-lg-60">
+        <section class="gift-section">
             <div class="container">
                 <h2 class="text-dark text-capitalize fw-semibold text-center heading-h2 mb-0">
                     Super cool Gift box
