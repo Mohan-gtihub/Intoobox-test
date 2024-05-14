@@ -529,7 +529,7 @@
                 </h2>
                 <p class="text-muted w-100 w-md-60 w-lg-50 mx-auto lh-base text-center mt-2 mb-0">
                     The luxury cardboard boxes have all the characteristics that define
-                    a premium packaging: quality of materials, solidity, textures, and
+                    a premium packaging<br> quality of materials, solidity, textures, and
                     also ecological.
                 </p>
                 <div class="mt-6 mt-8">
