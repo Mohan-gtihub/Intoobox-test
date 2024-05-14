@@ -60,10 +60,20 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <div class="form-group">
-              <label for="checkout-phone">{{__('Phone Number')}}</label>
-              <input class="form-control" name="bill_phone" type="text" id="checkout-phone" required value="{{isset($user) ? $user->phone : ''}}">
-            </div>
+            <script>
+              function validatePhoneNumber(input) {
+          var phoneNumber = input.value;
+          if (!(/^\d+$/.test(phoneNumber))) {
+        // If the input is not a number, show a popup
+           alert("Please enter only numeric characters for the phone number.");
+        // Clear the input field
+          input.value = '';
+    }
+}          </script>
+           <div class="form-group">
+           <label for="checkout-phone">{{__('Phone Number')}}</label>
+           <input class="form-control" name="bill_phone" type="text" id="checkout-phone" onchange="validatePhoneNumber(this)" required value="{{isset($user) ? $user->phone : ''}}">
+         </div>
           </div>
         </div>
         @if (PriceHelper::CheckDigital())
