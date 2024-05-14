@@ -242,7 +242,7 @@
                 </h2>
                 <p class="text-muted w-100 w-md-80 w-lg-70 mx-auto lh-base text-center mt-2 mb-0">
                     Discover our wide range of food boxes and cardboard packaging for
-                    take away food available in different formats. The take away food
+                    take away food available in different formats. <br>The take away food
                     packaging is perfect for restaurants, bars, delivery businesses,
                     caterings or for private use.
                 </p>
