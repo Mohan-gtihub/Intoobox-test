@@ -614,6 +614,6 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
 
 @media(max-width:1440px){
     #marqimg{
-        width: fit-content;
+        width: 100px;
     }
 }
