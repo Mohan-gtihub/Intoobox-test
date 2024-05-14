@@ -522,7 +522,7 @@
         <!-- gift section ends here -->
 
         <!-- luxury box section starts here -->
-        <section class="luxury-section" py-12 py-lg-60>
+        <section class="luxury-section" id="luxpadd">
             <div class="container-fluid container-5xl px-4 px-md-6 px-lg-8 px-5xl-0">
                 <h2 class="text-dark text-capitalize fw-semibold text-center heading-h2 mb-0">
                     Luxury Packaging Boxes
