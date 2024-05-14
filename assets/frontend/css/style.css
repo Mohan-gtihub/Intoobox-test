@@ -603,8 +603,7 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
     #startalert{
         width: 100%;
     }
-}
-
-#alertsize{
-    max-width: 1600px!important;
+    #alertsize{
+        max-width: 1600px!important;
+    }
 }
