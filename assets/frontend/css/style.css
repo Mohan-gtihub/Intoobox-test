@@ -617,6 +617,7 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
         width: 200px;
     }
     #imgtest{
-        max-height: 35px!important;
+        width: 100px!important;
+        height: 80px!important;
     }
 }
