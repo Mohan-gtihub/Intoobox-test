@@ -641,7 +641,7 @@
                 <div class="brand-slider owl-carousel">
                     @foreach ($brands as $brand)
                         <div class="slider-item py-2 logo-wrap d-flex justify-content-center"id="marqimg">
-                            <img class="d-block hi-50 lazy no-download" src="{{ asset('assets/images/' . $brand->photo) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}">
+                            <img class="d-block hi-50 lazy no-download" src="{{ asset('assets/images/' . $brand->photo) }}" alt="{{ $brand->name }}" title="{{ $brand->name }}"id="imgtest">
                         </div>
                     @endforeach
                 </div>

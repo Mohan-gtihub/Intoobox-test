@@ -616,4 +616,7 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
     #marqimg{
         width: 200px;
     }
+    #imgtest{
+        max-height: 45px;
+    }
 }
