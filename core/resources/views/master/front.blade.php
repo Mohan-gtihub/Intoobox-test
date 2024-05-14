@@ -531,7 +531,7 @@ body_theme4 @endif
             <!-- off canvas cart  -->
             <!--    announcement banner section start   -->
             <a class="announcement-banner" href="#announcement-modal"></a>
-            <div id="announcement-modal" class="mfp-hide white-popup">
+            <div id="announcement-modal" class="mfp-hide white-popup" id="alertsize">
                 @if ($setting->announcement_type == 'newletter')
                     <div class="announcement-with-content">
                         <div class="row align-items-lg-center">
