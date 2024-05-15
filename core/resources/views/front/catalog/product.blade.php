@@ -229,8 +229,9 @@
                     <span class="text-dark fs-16"> : </span>
                     <span class="text-muted fs-16 text-start  w-50">{{ $item->sku }}</span>
                 </div>
-                </div>
                 <div class="line-sep2"></div>
+                </div>
+                
 
                 <div class="mt-5 mt-lg-8 devider"></div>
                 <div class="mt-5">
