@@ -209,7 +209,7 @@
                 </div>
                
                 <div class="my-12 my-lg-8 devider"></div>
-                <div class="line-sep"></div>
+                <div class="line-sep1"></div>
                 <div class=" d-flex justify-content-between">
                     <span class="text-dark fs-16 left-titles"> Availability </span>
                     <span class="text-dark fs-16"> : </span>
@@ -229,8 +229,8 @@
                     <span class="text-dark fs-16"> : </span>
                     <span class="text-muted fs-16 text-start  w-50">{{ $item->sku }}</span>
                 </div>
-                <div class="line-sep"></div>
                 </div>
+                <div class="line-sep2"></div>
 
                 <div class="mt-5 mt-lg-8 devider"></div>
                 <div class="mt-5">

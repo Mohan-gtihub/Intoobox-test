@@ -622,7 +622,13 @@ button.accordion-button[aria-expanded=true] .faq-question::after{position:absolu
     }
 }
 
-.line-sep{
+.line-sep1{
+    border-top: 1px solid rgba(0, 0, 0, 0.091);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.line-sep2{
     border-top: 1px solid rgba(0, 0, 0, 0.091);
     padding-top: 20px;
     padding-bottom: 20px;
