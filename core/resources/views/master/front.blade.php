@@ -557,13 +557,13 @@ body_theme4 @endif
                                     </div>
                                 </form>
                                 <div class="modal-scl-icons mt-2">
-                                    <a href="#" class="fab fa-facebook text-dark bg-white"></a>
+                                    <a href="https://www.facebook.com/intoobox/" class="fab fa-facebook text-dark bg-white"></a>
                                     <!-- Facebook -->
-                                    <a href="#" class="fab fa-instagram ms-3 text-dark bg-white"></a>
+                                    <a href="https://www.instagram.com/intoobox/" class="fab fa-instagram ms-3 text-dark bg-white"></a>
                                     <!-- Instagram -->
-                                    <a href="#" class="fab fa-youtube ms-3 text-dark bg-white"></a>
+                                    <a href="https://www.youtube.com/channel/UC4a0s-1yxtzi6otS-P_p3OA" class="fab fa-youtube ms-3 text-dark bg-white"></a>
                                     <!-- YouTube -->
-                                    <a href="#" class="fab fa-pinterest ms-3 text-dark bg-white"></a>
+                                    <a href="https://www.pinterest.com/" class="fab fa-pinterest ms-3 text-dark bg-white"></a>
                                     <!-- Pinterest -->
                                 </div>
 
