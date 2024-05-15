@@ -127,7 +127,7 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="items[]" placeholder="{{ __('Number of itmes') }}" value="">
+                                            <input type="text" class="form-control" name="items[]" placeholder="{{ __('Number of items') }}" value="">
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                     <div class="flex-btn">
-                                        <button type="button" class="btn btn-success add-discount-items" data-text="{{ __('Number of itmes') }}" data-text1="{{ __('100.0') }}"> <i
+                                        <button type="button" class="btn btn-success add-discount-items" data-text="{{ __('Number of items') }}" data-text1="{{ __('100.0') }}"> <i
                                                 class="fa fa-plus"></i> </button>
                                     </div>
                                 </div>
