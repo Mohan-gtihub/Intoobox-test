@@ -162,6 +162,7 @@
                             <div class="mb-6 d-flex align-items-center justify-content-between">
                                 <label for="{{ $attribute->name }}" class="options-label left-titles">{{ $attribute->name }}</label>
                                 <span class="text-dark fs-16 ">:</span>
+                                <hr>
                                 <select class="form-control fs-16 attribute_option w-50" id="{{ $attribute->name }}">
                                     @foreach ($attribute->options->where('stock', '!=', '0') as $option)
                                         <option value="{{ $option->name }}" data-type="{{ $attribute->id }}" data-href="{{ $option->id }}"
@@ -169,6 +170,7 @@
                                             {{ $option->name }}</option>
                                     @endforeach
                                 </select>
+                                <hr>
                             </div>
                         @endif
                     @endforeach
