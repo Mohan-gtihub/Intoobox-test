@@ -106,10 +106,21 @@
           </div>
         </div>
         <div class="row">
+        <script>
+              function validateZipCode(input) {
+          var zipcode = input.value;
+          if (!(/^\d+$/.test(zipcode))) {
+        // If the input is not a number, show a popup
+           alert("Please enter only numeric characters for the zipcode.");
+        // Clear the input field
+          input.value = '';
+    }
+}          </script>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="checkout-zip">{{__('Zip Code')}}</label>
-              <input class="form-control" name="bill_zip" type="text" id="checkout-zip" value="{{isset($user) ? $user->bill_zip : ''}}">
+              <input class="form-control" name="bill_zip" type="text" id="checkout-zip" onchange="validateZipCode(this)" value="{{isset($user) ? $user->bill_zip : ''}}">
+
             </div>
           </div>
           <div class="col-sm-6">
