@@ -92,13 +92,24 @@
                             <h5 class="text-dark heading-h4 fw-bold mb-4">
                               Low Minimums
                             </h5>
-                            <p class="text-gray-700 text-base fs-16 mb-0">
+                            <!-- <p class="text-gray-700 text-base fs-16 mb-0">
                                 For all order over 99$. It has been arrived as soon as
                                 possible
-                            </p>
+                            </p> -->
                         </div>
                     </div>
-
+                    <div class="col-md-6 col-lg-3">
+                            <div class="d-flex justify-content-lg-center align-items-center">
+                                <div>
+                                    <img src="{{ asset('assets/images/liquidity-icon.svg') }}" alt="hand icons" class="img-fluid no-download"  width="35" />
+                                </div>
+                                <div class="ms-5">
+                                    <h5 class="text-dark heading-h6 fw-bold mb-1">
+                                        Sustainable Solutions
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
                     <div class="d-flex mt-6 mt-lg-8">
                         <div>
                             <img src="{{ asset('assets/frontend/images/support.png') }}" alt="hand icons" class="img-fluid" />
@@ -107,10 +118,10 @@
                             <h5 class="text-dark heading-h4 fw-bold mb-4">
                                 24/7 Support
                             </h5>
-                            <p class="text-gray-700 text-base fs-16 mb-0">
+                            <!-- <p class="text-gray-700 text-base fs-16 mb-0">
                                 If goods have Problems. It has been achieving great heights
                                 so far as its popularity
-                            </p>
+                            </p> -->
                         </div>
                     </div>
 
@@ -122,10 +133,10 @@
                             <h5 class="text-dark heading-h4 fw-bold mb-4">
                                 Secure Payment
                             </h5>
-                            <p class="text-gray-700 text-base fs-16 mb-0">
+                            <!-- <p class="text-gray-700 text-base fs-16 mb-0">
                                 If goods have Problems. It has been achieving great heights
                                 so far as its popularity
-                            </p>
+                            </p> -->
                         </div>
                     </div>
                 </div>
