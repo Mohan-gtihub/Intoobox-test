@@ -863,7 +863,7 @@ body_theme4 @endif
     <!-- Cookie alert dialog  -->
 
     <div id="wp" class="wa-icon-fix">
-        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands "></i>
     </div>
     <div class="chat-box">
         <div class="chat-top">
@@ -877,7 +877,7 @@ body_theme4 @endif
             <div class="">
                 <a target="_blank" href="https://wa.me/918886547678?text=" class="wp-btn w-100">
                     <span>
-                        <i class="fa-brands fa-whatsapp"></i>
+                        <i class="fa-brands "></i>
                     </span>
                     <span class="ms-3">Let's talk on whatsapp </span>
                     <span class="ms-4">
