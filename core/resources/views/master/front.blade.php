@@ -551,7 +551,7 @@ body_theme4 @endif
                                         </div>
                                         <div class="col-12">
                                             <button class="btn btn-dark text-white btn-block w-100 py-4 shadow-0 outline-0 rounded-0 text-uppercase">
-                                                Subscribe Now
+                                                 Now
                                             </button>
                                         </div>
                                     </div>
