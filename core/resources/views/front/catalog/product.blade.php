@@ -26,7 +26,7 @@
                 </div>
                 <div class="text-gray-700 ms-2">-</div>
                 <div>
-                    <a href="#" class="fs-16 ms-2 fw text-dark"> Shop </a>
+                    <a href="https://intoobox.com/" class="fs-16 ms-2 fw text-dark"> Shop </a>
                 </div>
                 <div class="text-gray-700 ms-2">-</div>
                 <p class="text-gray-700 ms-2 mb-0">{{ $item->name }}</p>
