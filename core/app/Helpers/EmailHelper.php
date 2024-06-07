@@ -38,7 +38,7 @@ class EmailHelper
             $this->mail->Password   = $this->setting->email_pass;
             if ($this->setting->email_encryption == 'ssl') {
                 $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            } else {
+            } else {    `
                 $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             }
             $this->mail->Port           = $this->setting->email_port;
