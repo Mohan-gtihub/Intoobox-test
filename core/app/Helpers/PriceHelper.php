@@ -213,8 +213,8 @@ class PriceHelper
                 $item = Item::findOrFail($key);
                 if(isset($item)){
                     if($item && $item->tax){
-                        $each_itemtax= $item::taxCalculate($item);
-                        $total_tax += $each_itemtax*$item['qty'];
+                        $total_tax += $item::taxCalculate($item);
+                       
                     }
                 }
             }
@@ -257,8 +257,7 @@ class PriceHelper
                 $item = Item::findOrFail($key);
                 if(isset($item)){
                     if($item && $item->tax){
-                        $each_itemtax= $item::taxCalculate($item);
-                        $total_tax += $each_itemtax*$item['qty'];
+                        $total_tax += $item::taxCalculate($item);
                     }
                 }
             }

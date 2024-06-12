@@ -50,7 +50,8 @@ trait PaystackCheckout
             $cart_total = $total + $option_price;
             $item = Item::findOrFail($key);
             if ($item->tax) {
-                $total_tax += $item::taxCalculate($item);
+                $each_itemtax= $item::taxCalculate($item);
+                $total_tax += $each_itemtax*$item['qty'];
                 $weight += $item->weight;
             }
 

@@ -20,14 +20,14 @@
                 <td class="text-gray-dark">{{PriceHelper::setCurrencyPrice($cart_total)}}</td>
               </tr>
 
-              @if($tax != 0)
+              @if( $tax!= 0)
               <tr>
                 <td>{{__('Estimated tax')}}:</td>
-                <td class="text-gray-dark">{{PriceHelper::setCurrencyPrice($tax)}}</td>
+                <td class="text-gray-dark">{{PriceHelper::setCurrencyPrice()}}</td>
               </tr>
               @endif
 
-              @if (DB::table('states')->count() > 0)
+              @if (DB::table('states')->count($tax) > 0)
               <tr class="{{Auth::check() && Auth::user()->state_id ? '' : 'd-none'}} set__state_price_tr">
                 <td>{{__('State tax')}}:</td>
                 <td class="text-gray-dark set__state_price">{{PriceHelper::setCurrencyPrice(Auth::check() && Auth::user()->state_id ? ($cart_total*Auth::user()->state->price/100 ): 0)}}</td>
