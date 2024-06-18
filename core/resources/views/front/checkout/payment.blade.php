@@ -6,7 +6,7 @@
     <!-- Page Title-->
 <div class="container pt-8 pt-lg-12 pt-xxl-60 pb-60 pb-lg-80 pb-xxl-100">
     <h2 class="mb-0 text-center fw-bold text-dark heading-h2">
-      {{ __('Review your order and pay') }}
+      {{ __('iew your order and pay') }}
     </h2>
     <div class="d-flex align-items-center justify-content-center mt-4">
       <div>
