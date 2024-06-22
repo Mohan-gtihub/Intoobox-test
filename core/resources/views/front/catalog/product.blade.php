@@ -236,7 +236,7 @@
                 <div class="mt-5 mt-lg-8 devider"></div>
                 <div class="mt-5">
                     <h5 class="fw-medium mb-4">DESCRIPTION</h5>
-                    <p class="text-muted" style="text-align: justify;"> {{ $item->sort_details }}</p>
+                    <p class="text-muted" id="change" style="text-align: justify;"> {{ $item->sort_details }}</p>
                 </div>
                 <style>
                     .left-titles {

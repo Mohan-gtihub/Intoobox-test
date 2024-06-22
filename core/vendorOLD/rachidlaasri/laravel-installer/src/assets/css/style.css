@@ -2360,7 +2360,9 @@ aside {
   display: block; }
 
 details {
-  display: block; }
+  display: block;
+  
+ }
 
 figcaption {
   display: block; }
